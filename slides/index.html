@@ -50,21 +50,6 @@
             <p>podstawy</p>
         </section>
 
-        <section>
-            <h2>Przegląd</h2>
-            TODO
-            <ul>
-                <li>typy</li>
-                <li>referencja</li>
-                <li>kontekst</li>
-                <li>binding</li>
-                <li>zakres widoczności i HOISTING</li>
-                <li>tworzenie obiektów</li>
-                <li>dziedziczenie</li>
-                <li>+</li>
-            </ul>
-        </section>
-
         <section data-state="type">
             <section>
                 <h2>proste</h2>
@@ -122,7 +107,24 @@
                     <span class="fragment element-log">{ key: 'value', type: 'monster' }</span>
                 </code></pre>
             </section>
-            <section data-state="toggle">
+            <section>
+                <h3>Obiekt</h3>
+                <pre><code class="hljs">
+                    <span class="toggle-hide-0"><!--
+                        -->> var myObj = { key: 'value' }
+<!---->                    > function addProperty(objToExtend) {<!--
+                    --></span>
+                        <span class="toggle-show-0">var obj = Object.create(objToExtend);</span>
+                        <span class="toggle-hide-0"><!--
+                            -->obj.type = 'monster';
+<!---->                    };
+<!---->                    > addProperty(myObj);<!--
+                        --></span>
+                    > console.log(myObj);
+                    <span class="fragment element-log">{ key: 'value ' }</span>
+                </code></pre>
+            </section>
+            <section>
                 <h3>Obiekt</h3>
                 es6
                 <pre><code class="hljs">
@@ -137,7 +139,7 @@
 <!---->                    > addProperty(myObj);<!--
                         --></span>
                     > console.log(myObj);
-                    <span class="fragment element-log">{ key: 'value ' }</span>
+                    <span class="element-log">{ key: 'value ' }</span>
                 </code></pre>
             </section>
 
@@ -242,7 +244,7 @@
             <section>
                 <pre><code class="hljs">
                 > &lt;button
-                  onclick="function() { console.log(this); }"&gt;
+                  onclick="(function() { console.log(this); })()"&gt;
                     Save
                   &lt;/button&gt;
                 <span class="fragment element-log">window</span>

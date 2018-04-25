@@ -1,5 +1,7 @@
 const logger = require('./logger');
 let wasSend = false;
+const personDataSet = { name: 'name1', age: 20, team: 'pppswatppp' };
+
 module.exports = {
     reference: {
         userCheck(newUser, oldUser) {
@@ -177,8 +179,113 @@ module.exports = {
         oneTrueEventOptions: {
             sendData: () =>  wasSend = true
         }
+    },
+    object: {
+        userObj(obj) {
+            let hasError = false;
+            logger.title = 'User object';
+
+            if(!obj) {
+                return;
+            }
+
+            hasError = !hasProperty(obj, 'name') || hasError ;
+            hasError = !hasProperty(obj, 'age') || hasError;
+
+            if(!hasError) {
+                logger.ok()
+            }
+        },
+        userObjectExtend(sourceObj, extendedObj) {
+            logger.title = 'Object extend';
+            let hasError = false;
+
+            if(!extendedObj || !sourceObj) {
+                return;
+            }
+
+            if(extendedObj === sourceObj) {
+                logger.error('New (extended) object is reference to source object');
+                return;
+            }
+
+            hasError = !hasProperty(extendedObj, 'name') || hasError;
+            hasError = !hasProperty(extendedObj, 'age') || hasError;
+            hasError = !hasProperty(extendedObj, 'team') || hasError;
+
+            if(!hasError) {
+                logger.ok()
+            }
+        },
+        userConstructor(Person) {
+            if(!Person) {
+                return;
+            }
+
+            const NO_PROPERTY_ERROR_MESSAGE = `Class instance not have property: '$propertyName'`;
+            const VALUES_NOT_SAME_ERROR_MESSAGE = `Instance '$name' value is not equal data set '$name' value`;
+            logger.title = 'Function object';
+            const person =  new Person(personDataSet);
+            let hasErrors = false;
+
+            hasErrors = hasErrors || !hasProperty(person, 'name', NO_PROPERTY_ERROR_MESSAGE);
+            hasErrors = hasErrors || !hasProperty(person, 'age', NO_PROPERTY_ERROR_MESSAGE);
+            hasErrors = hasErrors || !hasProperty(person, 'team', NO_PROPERTY_ERROR_MESSAGE);
+
+            if(person.name !== personDataSet.name) {
+                logger.error(VALUES_NOT_SAME_ERROR_MESSAGE.replace(/\$name/g, 'name'));
+                hasErrors = true;
+            }
+
+            if(person.age !== personDataSet.age) {
+                logger.error(VALUES_NOT_SAME_ERROR_MESSAGE.replace(/\$name/g, 'age'));
+                hasErrors = true;
+            }
+            if(person.team !== personDataSet.team) {
+                logger.error(VALUES_NOT_SAME_ERROR_MESSAGE.replace(/\$name/g, 'team'));
+                hasErrors = true;
+            }
+
+
+            if(!hasErrors) {
+                logger.ok();
+            }
+        },
+        userPrototype(Person) {
+            if(!Person) {
+                return;
+            }
+
+            logger.title = 'User prototype';
+            const instance = new Person(personDataSet);
+            const result = instance.iAm && instance.iAm();
+            const expectedResult = `I am ${personDataSet.name} from ${personDataSet.team} team`;
+
+            if(result !== expectedResult) {
+                logger.error(`'${result}' string is not equal to expected result (${expectedResult})`);
+                return;
+            }
+
+            if(!Person.prototype || !Person.prototype.iAm) {
+                logger.error(`'iAm' method was not found in prototype`);
+                return;
+            }
+
+            logger.ok();
+        }
     }
+
 };
+
+function hasProperty(obj, propertyName, customMessage) {
+    const custom = customMessage && customMessage.replace(/\$propertyName/g, propertyName)
+    if(obj[propertyName] === undefined) {
+        logger.error(custom || `Object not have '${propertyName}' property`);
+        return false;
+    }
+
+    return true;
+}
 
 function didUserUseCheats(func) {
     const functionString = func.toString();

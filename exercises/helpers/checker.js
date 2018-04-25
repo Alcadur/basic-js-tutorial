@@ -318,7 +318,6 @@ module.exports = {
         },
         async totalPrice(order) {
             const expectedPrice = data.cart.reduce((sum, item) => sum + item.basePrice, 0) * (1 + order.profitMargin);
-            let hasError = false;
             await order.countTotalPrice();
             const countTotalPriceSourceString = order.countTotalPrice.valueOf().toString();
 

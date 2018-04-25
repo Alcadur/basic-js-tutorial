@@ -18,7 +18,7 @@ const newUser = createUserBasedOnWithName(defaultUser, 'Franek');
 checker.reference.userCheck(newUser, defaultUser);
 
 // Popraw metodę 'createArrayWithUser' w taki sposób aby tworzyła nową 
-// tablicę na podstawie podanej źródła i wszystkie wystąpienia 'user' zmianieł na obiekt
+// tablicę na podstawie podanego źródła i wszystkie wystąpienia 'user' zmieniła na obiekt
 // podany jako 2 argument nie zmieniając
 
 var sourceArray = [0, 'user', 7, 'user', 8, 9, 'user'];

@@ -1,5 +1,5 @@
 const logger = require('./logger');
-
+let wasSend = false;
 module.exports = {
     reference: {
         userCheck(newUser, oldUser) {
@@ -38,8 +38,8 @@ module.exports = {
     context: {
         checkUserFullName(userObj) {
             logger.title = 'Get user full name taks'
-            const firstName = Buffer.from(Math.random().toString()).toString('base64');
-            const lastName = Buffer.from(Math.random().toString()).toString('base64');
+            const firstName = randomBase64();
+            const lastName = randomBase64();
             const testUser = {
                 firstName,
                 lastName,
@@ -123,6 +123,60 @@ module.exports = {
 
             logger.ok();
         }
+    },
+    bind: {
+        weapon(getter, warier) {
+            logger.title = 'warier';
+            warier.weapon = randomBase64();
+
+            if(getter() === warier.weapon) {
+                logger.ok();
+            } else {
+                logger.error('Wrong or hardcoded return statement');
+            }
+        },
+        user(joanneFactory) {
+            logger.title = 'joanneFactory';
+            const factoryString = joanneFactory.toString();
+            const testAge = Math.random();
+            const testObj = joanneFactory(testAge);
+            const expected = { name: 'Joanne Bałwana', age: testAge };
+
+            if(testObj.name !== expected.name || testObj.age !== expected.age) {
+                logger.error('Object is not correct result of joanneFactory');
+                return;
+            }
+
+            if(factoryString.indexOf('[native code]') === -1) {
+                logger.error('Try to use \'bind\' and not change \'createUser\' directly');
+                return;
+            }
+
+            logger.ok()
+        },
+        oneTrueEventListener(eventHandler) {
+            let wasPrevent = false;
+            const event = { preventDefault: () =>  wasPrevent = true };
+            wasSend = false;
+            logger.title = 'oneTrueEvent';
+
+            try {
+                eventHandler(event);
+            } catch (e) {
+                logger.error('error was thrown');
+                return;
+            }
+
+            if(!wasPrevent || !wasSend) {
+                logger.error('preventDefault or sendData was not called');
+                return;
+            }
+
+            logger.ok();
+        },
+        oneTrueEventOptions: {
+            sendData: () =>  wasSend = true
+        }
     }
 };
 
@@ -130,4 +184,8 @@ function didUserUseCheats(func) {
     const functionString = func.toString();
     const regexp = /^\s*return this === (this)/gim
     return regexp.test(functionString);
+}
+
+function randomBase64() {
+    return Buffer.from(Math.random().toString()).toString('base64');
 }

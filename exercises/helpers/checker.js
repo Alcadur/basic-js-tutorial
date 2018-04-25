@@ -1,4 +1,5 @@
 const logger = require('./logger');
+const data = require('./data');
 let wasSend = false;
 const personDataSet = { name: 'name1', age: 20, team: 'pppswatppp' };
 
@@ -273,9 +274,72 @@ module.exports = {
 
             logger.ok();
         }
-    }
+    },
+    arrow: {
+        methods(univers) {
+            logger.title = 'Methods definition';
+            if(!univers.getNeighbors || !univers.getNextPlanets) {
+                logger.error('getNeighbors and/or getNextPlanets are not defined');
+                return;
+            }
 
+            const getNeighborsSourceString = univers.getNeighbors.valueOf().toString();
+            const getNextPlanetsSourceString = univers.getNextPlanets.valueOf().toString();
+            let hasError = false;
+            const expectedNeighbors = getNeighbors(univers.planets, 'Ziemia');
+
+            const neighbors = univers.getNeighbors();
+
+
+            if(univers.planets.indexOf('Ziemia') === -1) {
+                logger.error('There is no \'Ziemia\' in Your univers');
+                return;
+            }
+
+            if(getNeighborsSourceString.indexOf('getNeighbors() {') === -1) {
+                logger.error('getNeighbors function was not declared as method');
+                hasError = true;
+            }
+
+            if(neighbors.indexOf(expectedNeighbors[0]) === -1 || neighbors.indexOf(expectedNeighbors[1]) === -1) {
+                logger.error(`getNeighbors return wrong array (${neighbors}), should return ${expectedNeighbors}`);
+                hasError = true;
+            }
+
+            if(getNextPlanetsSourceString.indexOf('getNextPlanets() {') === -1) {
+                logger.error('getNextPlanets function was not declared as method');
+                hasError = true;
+            }
+
+            if(!hasError) {
+                logger(`${logger.title}: You don't have to implement body of getNextPlanets :)`);
+                logger.ok();
+            }
+        },
+        async totalPrice(order) {
+            const expectedPrice = data.cart.reduce((sum, item) => sum + item.basePrice, 0) * (1 + order.profitMargin);
+            let hasError = false;
+            await order.countTotalPrice();
+            const countTotalPriceSourceString = order.countTotalPrice.valueOf().toString();
+
+            if(order.totalPrice !== expectedPrice) {
+                logger.error(`Expected price is ${expectedPrice} but got ${order.totalPrice}`);
+                return;
+            }
+
+            if(countTotalPriceSourceString.indexOf('fakeApi.getCartItems().then(items =>') === -1) {
+                logger.error('You should use arrow function, not change function body');
+                return;
+            }
+
+            logger.ok();
+        }
+    }
 };
+
+function getNeighbors(array, item) {
+    return [array[array.indexOf(item)-1], array[array.indexOf(item)+1]]
+}
 
 function hasProperty(obj, propertyName, customMessage) {
     const custom = customMessage && customMessage.replace(/\$propertyName/g, propertyName)

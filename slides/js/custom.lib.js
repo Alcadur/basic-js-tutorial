@@ -1,5 +1,7 @@
 const breadcrumbsContainer = document.querySelector('.breadcrumb');
 const breadcrumbs = breadcrumbsContainer.querySelectorAll('.breadcrumb li');
+const first = breadcrumbsContainer.querySelector('.first');
+const selectBorderWidth = 4;
 toArray(breadcrumbs).forEach((li) => li.classList.add('future'));
 
 function toArray(obj) {
@@ -50,6 +52,40 @@ function markAsActiveBreadcrumb (event) {
     breadcrumbsContainer.dataset.active = event.type;
     const activeWidth = getComputedStyle(active).width ;
     breadcrumbsContainer.querySelector('.selector').style.fontSize = activeWidth;
+
+    first.style.marginLeft =  countFirstOffsetFor(active) + 'px';
+}
+
+function countFirstOffsetFor(element) {
+    const elementCSS = getElementCSSValues(element);
+    const preElementsSum = sumPrevElementsCSS(element);
+
+    let result = -(elementCSS.width / 2) + selectBorderWidth + (elementCSS.marginRight / 2)//+ selectBorderWidth + (elementCSS.marginRight / 2);
+    result -= preElementsSum;
+
+    return result
+}
+
+function sumPrevElementsCSS(baseElement, lastResult = 0) {
+    const prevElement = baseElement.previousElementSibling;
+
+    if(!prevElement || prevElement.classList.contains('selector')) {
+        return lastResult
+    }
+
+    const prevElementCSS = getElementCSSValues(prevElement);
+
+    lastResult += prevElementCSS.width + prevElementCSS.marginRight;
+
+    return sumPrevElementsCSS(prevElement, lastResult);
+}
+
+function getElementCSSValues(element) {
+    const computed = getComputedStyle(element);
+    return {
+        width: parseFloat(computed.width),
+        marginRight: parseFloat(computed.marginRight)
+    }
 }
 
 /**

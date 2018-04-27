@@ -598,9 +598,9 @@
             <section>
                 <pre><code class="hljs">
         > const contextLogger = {
-            arrow: () => console.log('arrow', this), // or arguments
-            short() { console.log('short', this); }
-            long: function() { console.log('long', this); }
+            arrow: () => console.log(this), // or arguments
+            short() { console.log(this); },
+            long: function() { console.log(this); }
         }
         > contextLogger.short();
         <span class="fragment element-log">{ arrow: f(){}, short: f(){}, long: f(){} }</span>

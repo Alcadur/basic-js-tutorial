@@ -97,6 +97,7 @@
         </section>
 
         <section data-state="reference">
+            <section></section>
             <section>
                 <h3>Obiekt</h3>
                 <pre><code class="hljs">
@@ -123,7 +124,7 @@
 <!---->                    > addProperty(myObj);<!--
                         --></span>
                     > console.log(myObj);
-                    <span class="fragment element-log">{ key: 'value ' }</span>
+                    <span class="fragment element-log">{ key: 'value' }</span>
                 </code></pre>
             </section>
             <section>
@@ -141,7 +142,7 @@
 <!---->                    > addProperty(myObj);<!--
                         --></span>
                     > console.log(myObj);
-                    <span class="element-log">{ key: 'value ' }</span>
+                    <span class="element-log">{ key: 'value' }</span>
                 </code></pre>
             </section>
 
@@ -179,7 +180,7 @@
                     };
                     > appendTo(myArray);
                     > console.log(myArray);
-                    <span class="fragment element-log">[1, 2, 3, 4]</span>
+                    <span class="fragment element-log">[1, 2, 3]</span>
                     </code></pre>
             </section>
 
@@ -192,7 +193,7 @@
                     > var f1 = getTwo;
                     > var f2 = getTwo();
                     > console.log(f2, f1);
-                    <span class="fragment element-log">2 <span style="font-style: italic">f () { return 2; }</span></span>
+                    <span class="element-log"><span class="fragment">2</span> <span class="fragment">f () { return 2; }</span></span>
                 </code></pre>
             </section>
             <section>
@@ -284,6 +285,11 @@
             </section>
             <section>
                 <pre><code class="hljs">
+                .bind(thisArg[,  arg1[, arg2[, ...]]])
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
         > function multiParams(param1, param2, param3) {
             console.log(param1, param2, param3);
         };
@@ -298,7 +304,7 @@
             event.preventDefault();
             console.log('constParam is', constParam);
         }
-        > .addEventListener('click', clickHandler.bind(null, 'CONST');
+        > .addEventListener('click', clickHandler.bind(null, 'CONST'));
         <span class="fragment element-log">Uncaught TypeError: event.preventDefault is not a function</span>
                 </code></pre>
             </section>
@@ -308,7 +314,7 @@
             event.preventDefault();
             console.log('constParam is', constParam);
         }
-        > .addEventListener('click', clickHandler.bind(null, 'CONST');
+        > .addEventListener('click', clickHandler.bind(null, 'CONST'));
         <span class="fragment element-log">'constParam is CONST'</span>
                 </code></pre>
             </section>
@@ -521,7 +527,7 @@
             <section>
                 <pre><code class="hljs">
                     > function log(flag) {
-                        let message = 'I will ... You';
+                        let message = 'I will kil You';
 
                         if(flag) {
                             let message = 'Flag is set';
@@ -530,18 +536,18 @@
                         console.log(message);
                     }
                     > log(true);
-                    <span class="fragment element-log">'I will ... You'</span>
+                    <span class="fragment element-log">'I will kill You'</span>
                 </code></pre>
             </section>
             <section data-state="let">
                 <pre><code class="hljs">
-                    > function log(flag) {
-                        let message = 'I will ... You';
+                    > function log() {
+                        let message = 'I will kill You';
                         let message = 'Lemon tree';
 
                         console.log(message);
                     }
-                    > log(true);
+                    > log();
                     <span class="fragment element-log">'Identifier "message" has already been declared'</span>
                 </code></pre>
             </section>
@@ -601,7 +607,7 @@
         > contextLogger.long();
         <span class="fragment element-log">{ arrow: f(){}, short: f(){}, long: f(){} }</span>
         > contextLogger.arrow();
-        <span class="fragment element-log">window // arguments --> arguments is not defined</span>
+        <span class="fragment element-log">window // arguments --> arguments property is not defined</span>
                 </code></pre>
             </section>
             <section>

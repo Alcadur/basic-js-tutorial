@@ -128,11 +128,11 @@ module.exports = {
         }
     },
     bind: {
-        weapon(getter, warier) {
-            logger.title = 'warier';
-            warier.weapon = randomBase64();
+        weapon(getter, warrior) {
+            logger.title = 'warrior';
+            warrior.weapon = randomBase64();
 
-            if(getter() === warier.weapon) {
+            if(getter() === warrior.weapon) {
                 logger.ok();
             } else {
                 logger.error('Wrong or hardcoded return statement');

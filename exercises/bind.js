@@ -3,7 +3,7 @@ var checker = require('./helpers/checker');
 // zmień przypisanie do bindGetter w taki sposób aby metoda wywołała się
 // z w kontekście obiektu 'warier'
 
-var warier = {
+var warrior = {
     weapon: 'sword'
 };
 
@@ -13,7 +13,7 @@ function getWeapon() {
 //↓ Modyfikuj linie poniżej ↓
 var bindGetter = getWeapon;
 
-checker.bind.weapon(bindGetter, warier);
+checker.bind.weapon(bindGetter, warrior);
 
 // joanneFactory powinno przyjmować tylko jedne parametr którym jest wiek użytkownika np.
 // joanneFactory(18) => { name: 'Joanne Bałwana', age: 18 }

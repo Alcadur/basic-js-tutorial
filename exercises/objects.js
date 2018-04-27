@@ -2,7 +2,7 @@ var checker = require('./helpers/checker');
 
 // stwórz obiekt który będzie przechowywać Twoje: imię, wiek i nazwę/skrót Twojego zespołu
 // a następnie przekaż go jako argument do checker.object.userObj
-// przy tworzeniu obiektu użyj następujących kluczy: name - imie, age - wiek, team - zespół
+// przy tworzeniu obiektu użyj następujących kluczy: name - imie, age - wiek
 var user;
 
 checker.object.userObj(user);

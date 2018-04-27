@@ -33,7 +33,8 @@ var joanneFactory = createUser;
 
 checker.bind.user(joanneFactory);
 
-//
+// przekaż oneTrueEventHandler w taki sposób aby jej wywołanie w taki sposób: oneTrueEventHandler(event) nie spowodowało błędu
+// obiekt OPTIONS POSIADA wszystkie wymagane właściwości
 
 var options = checker.bind.oneTrueEventOptions;
 

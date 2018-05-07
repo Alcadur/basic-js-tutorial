@@ -112,7 +112,7 @@ module.exports = {
                 hasError = true;
             }
 
-            const button2ClickBody = /onclick="(.*)"/gi.exec(button2)[1] ;
+            const button2ClickBody = regex.exec(button2)[1] ;
             const button2ClickResult = eval(`(function(){ return ${button2ClickBody} })`).call(button2);
 
             if(!button2ClickResult || button2ClickResult !== global) {
@@ -166,7 +166,7 @@ module.exports = {
             try {
                 eventHandler(event);
             } catch (e) {
-                logger.error('error was thrown');
+                logger.error(e);
                 return;
             }
 

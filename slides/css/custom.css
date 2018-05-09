@@ -150,3 +150,11 @@
 .section-header {
     transform: translateY(100%);
 }
+
+.type-with-value {
+    color: #0d99a5;
+}
+
+.type-without-value {
+    color: #c72e2e;
+}

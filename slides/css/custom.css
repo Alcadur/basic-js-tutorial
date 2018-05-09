@@ -146,3 +146,7 @@
 .lets-code {
     width: 70%;
 }
+
+.section-header {
+    transform: translateY(100%);
+}

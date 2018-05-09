@@ -37,6 +37,7 @@
             <li class="selector"></li>
             <li class="first" data-type="introduced">Wstęp</li>
             <li data-type="type">Typy</li>
+            <li data-type="errors">Typy błędów</li>
             <li data-type="reference">Referencja</li>
             <li data-type="context" class="header-keyword">this</li>
             <li data-type="binding" class="header-keyword">bind</li>
@@ -92,6 +93,38 @@
                 <pre class="fragment "><code class="hljs">
                     > typeof NaN;
                     <span class="fragment element-log">'number'</span>
+                </code></pre>
+            </section>
+        </section>
+
+        <section data-state="errors">
+            <h3 class="section-header">Błędy</h3>
+
+            <section>
+                <ul>
+                    <li>semantyczne (składniowe)</li>
+                    <li>logiczne</li>
+                </ul>
+            </section>
+            <section>
+                <h4>Semantyczne</h4>
+
+                <pre><code class="hljs">
+                    > functon add(number1, number2) {
+                        return number1 + number2;
+                    }
+                    <span class="element-log">Uncaught SyntaxError: Unexpected identifier</span>
+                </code></pre>
+            </section>
+            <section>
+                <h4>Logiczne</h4>
+
+                <pre><code class="hljs">
+                    > function add(number1, number2) {
+                        return number1 - number2;
+                    }
+                    > add(5, 10);
+                    <span class="element-log">-5</span>
                 </code></pre>
             </section>
         </section>

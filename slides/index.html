@@ -37,13 +37,14 @@
             <li class="selector"></li>
             <li class="first" data-type="introduced">Wstęp</li>
             <li data-type="type">Typy</li>
-            <li data-type="functionType">Funkcje</li>
             <li data-type="errors">Typy błędów</li>
+            <li data-type="spread">Rest/Spread</li>
+            <li data-type="functionType">Funkcje</li>
+            <li data-type="object">Obiekty</li>
 
             <li data-type="reference">Referencja</li>
             <li data-type="context" class="header-keyword">this</li>
             <li data-type="binding" class="header-keyword">bind</li>
-            <li data-type="object">Obiekty</li>
             <li data-type="constLet" class="header-keyword"><span class="var">var</span> &nbsp; <span class="let">let</span> &nbsp; <span class="const">const</span></li>
             <li data-type="end">Koniec</li>
         </ul>
@@ -90,6 +91,70 @@
                 <pre class="fragment "><code class="hljs">
                     > typeof NaN;
                     <span class="fragment element-log">'number'</span>
+                </code></pre>
+            </section>
+        </section>
+
+        <section data-state="errors">
+            <h3 class="section-header">Błędy</h3>
+
+            <section>
+                <ul>
+                    <li>semantyczne (składniowe)</li>
+                    <li>logiczne</li>
+                </ul>
+            </section>
+            <section>
+                <h4>Semantyczne</h4>
+
+                <pre><code class="hljs">
+                    > functon add(number1, number2) {
+                        return number1 + number2;
+                    }
+                    <span class="element-log">Uncaught SyntaxError: Unexpected identifier</span>
+                </code></pre>
+            </section>
+            <section>
+                <h4>Logiczne</h4>
+
+                <pre><code class="hljs">
+                    > function add(number1, number2) {
+                        return number1 - number2;
+                    }
+                    > add(5, 10);
+                    <span class="element-log">-5</span>
+                </code></pre>
+            </section>
+        </section>
+
+        <section data-state="spread">
+
+            <section></section>
+            <section>
+                <h3>Spread</h3>
+                <h4 class="slide-es6"></h4>
+                <pre><code class="hljs">
+                    <span class="fragment">> var values = [4, 5, 6, 7, 8, 9];</span>
+                    <span class="fragment">> var digits = [1, 2, 3, ...values];</span>
+                    <span class="fragment">> digits;</span>
+                    <span class="fragment">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+                </code></pre>
+            </section>
+            <section>
+                <h3>Rest</h3>
+                <h4 class="slide-es6"></h4>
+                <pre><code class="hljs" style="display: flex; flex-direction: column">
+                    <span style="order: 2;" class="fragment"><!--
+-->                > joinChars('M', 'y', ' ', 'n', 'a', 'm', 'e');<!--
+                    --></span>
+                    <span style="order: 1;" class="fragment">
+                > function joinChars(...chars) {
+                    return chars.join('')
+                }<!--
+                    --></span><!--
+                    --><span class="element-log fragment" style="order: 3"><!--
+-->                My name
+                </span>
                 </code></pre>
             </section>
         </section>
@@ -189,35 +254,90 @@
             </section>
         </section>
 
-        <section data-state="errors">
-            <h3 class="section-header">Błędy</h3>
-
+        <section data-state="object">
             <section>
-                <ul>
-                    <li>semantyczne (składniowe)</li>
-                    <li>logiczne</li>
-                </ul>
+            <pre><code class="hljs">
+                <span class="fragment">> var o1 = {};</span>
+                <span class="fragment">> var o2 = Object.create(sourceObj);</span>
+                <span class="fragment">> function MyConstructor() {}</span>
+                <span class="fragment">> var fo1 = new MyConstructor();</span>
+                <span class="fragment">> var fo2 = new function() {};</span>
+            </code></pre>
             </section>
             <section>
-                <h4>Semantyczne</h4>
-
                 <pre><code class="hljs">
-                    > functon add(number1, number2) {
-                        return number1 + number2;
+                > var personDraft = {
+                    age: 20,
+                    name: 'Unknown',
+                    introduceYourself: function() {
+                        console.log('Hello, my name is '
+                            + this.name
+                            + ' and I am '
+                            + this.age
+                            + ' years old');
                     }
-                    <span class="element-log">Uncaught SyntaxError: Unexpected identifier</span>
+                };
+                > personDraft.introduceYourself();
+                <span class="fragment element-log">'Hello, my name is Unknown and I am 20 years old'</span>
                 </code></pre>
             </section>
             <section>
-                <h4>Logiczne</h4>
-
                 <pre><code class="hljs">
-                    > function add(number1, number2) {
-                        return number1 - number2;
-                    }
-                    > add(5, 10);
-                    <span class="element-log">-5</span>
+                > var lucy = Object.create(personDraft);
+                > lucy.name = 'Lucy';
+                > lucy.age = 25;
+                > lucy.introduceYourself();
+                <span class="fragment element-log">'Hello, my name is Lucy and I am 25 years old'</span>
                 </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+                > var Person = function(name, age) {
+                    this.name = name;
+                    this.age = age;
+                    this.introduceYourself = function() { /* ... */ }
+                }
+                > var lucy = new Person('Lucy', 25);
+                > lucy.introduceYourself();
+                <span class="fragment element-log">'Hello, my name is Lucy and I am 25 years old'</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+    > Person.prototype.introduceYourself = function() { /* ... */ }
+    > var susana = new Person('Susana', 31);
+    > susana.introduceYourself();
+    <span class="fragment element-log">'Hello, my name is Susana and I am 31 years old'</span>
+                </code></pre>
+            </section>
+
+            <section>
+                <table class="compare-table">
+                    <tr>
+                        <th>
+                            <pre><code class="hljs">
+    this.introduceYourself
+                            </code></pre>
+                        </th>
+                        <th>
+                            <pre><code class="hljs">
+    prototype.introduceYourself
+                            </code></pre>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img class="fragment" src="assets/constructor.png" alt="constructor">
+                        </td>
+                        <td>
+                            <img class="fragment" src="assets/prototype.png" alt="prototype">
+                        </td>
+                    </tr>
+                </table>
+
+            </section>
+            <section>
+                <img src="assets/lets-code.png" alt="let's code" class="lets-code">
             </section>
         </section>
 
@@ -253,8 +373,8 @@
                 </code></pre>
             </section>
             <section>
-                <h3>Obiekt</h3>
-                es6
+                <h3 >Obiekt</h3>
+                <h3 class="slide-es6"></h3>
                 <pre><code class="hljs">
                     <span class="toggle-hide-0"><!--
                         -->> var myObj = { key: 'value' }
@@ -297,7 +417,7 @@
             </section>
             <section>
                 <h3>Tablica</h3>
-                es6
+                <h3 class="slide-es6"></h3>
                 <pre><code class="hljs">
                     > myArray = [1, 2, 3];
                     > function appendTo(arr) {
@@ -315,9 +435,9 @@
                     > function getTwo() {
                         return 2;
                     };
-                    > var f1 = getTwo;
-                    > var f2 = getTwo();
-                    > console.log(f2, f1);
+                    > var f1 = getTwo();
+                    > var f2 = getTwo;
+                    > console.log(f1, f2);
                     <span class="element-log"><span class="fragment">2</span> <span class="fragment">f () { return 2; }</span></span>
                 </code></pre>
             </section>
@@ -487,93 +607,6 @@
         > .addEventListener('click', clickHandler.bind(null, 'CONST'));
         <span class="fragment element-log">'constParam is CONST'</span>
                 </code></pre>
-            </section>
-            <section>
-                <img src="assets/lets-code.png" alt="let's code" class="lets-code">
-            </section>
-        </section>
-
-        <section data-state="object">
-            <section>
-            <pre><code class="hljs">
-                <span class="fragment">> var o1 = {};</span>
-                <span class="fragment">> var o2 = Object.create(sourceObj);</span>
-                <span class="fragment">> function MyConstructor() {}</span>
-                <span class="fragment">> var fo1 = new MyConstructor();</span>
-                <span class="fragment">> var fo2 = new function() {};</span>
-            </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-                > var personDraft = {
-                    age: 20,
-                    name: 'Unknown',
-                    introduceYourself: function() {
-                        console.log('Hello, my name is '
-                            + this.name
-                            + ' and I am '
-                            + this.age
-                            + ' years old');
-                    }
-                };
-                > personDraft.introduceYourself();
-                <span class="fragment element-log">'Hello, my name is Unknown and I am 20 years old'</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-                > var lucy = Object.create(personDraft);
-                > lucy.name = 'Lucy';
-                > lucy.age = 25;
-                > lucy.introduceYourself();
-                <span class="fragment element-log">'Hello, my name is Lucy and I am 25 years old'</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-                > var Person = function(name, age) {
-                    this.name = name;
-                    this.age = age;
-                    this.introduceYourself = function() { /* ... */ }
-                }
-                > var lucy = new Person('Lucy', 25);
-                > lucy.introduceYourself();
-                <span class="fragment element-log">'Hello, my name is Lucy and I am 25 years old'</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-    > Person.prototype.introduceYourself = function() { /* ... */ }
-    > var susana = new Person('Susana', 31);
-    > susana.introduceYourself();
-    <span class="fragment element-log">'Hello, my name is Susana and I am 31 years old'</span>
-                </code></pre>
-            </section>
-
-            <section>
-                <table class="compare-table">
-                    <tr>
-                        <th>
-                            <pre><code class="hljs">
-    this.introduceYourself
-                            </code></pre>
-                        </th>
-                        <th>
-                            <pre><code class="hljs">
-    prototype.introduceYourself
-                            </code></pre>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img class="fragment" src="assets/constructor.png" alt="constructor">
-                        </td>
-                        <td>
-                            <img class="fragment" src="assets/prototype.png" alt="prototype">
-                        </td>
-                    </tr>
-                </table>
-
             </section>
             <section>
                 <img src="assets/lets-code.png" alt="let's code" class="lets-code">
@@ -768,7 +801,7 @@
         dependencies: [
             { src: 'lib/js/classList.js' },
             { src: 'js/highlight.js', async: true, callback: () => hljs.initHighlightingOnLoad() },
-            //{ src: 'js/custom.lib.js', callback: () => Toggle.init() }
+            { src: 'js/notes/notes.js', async: true, callback: function () { window.localStorage.setItem('reveal-speaker-layout', 'tall'); } }
         ]
     });
 

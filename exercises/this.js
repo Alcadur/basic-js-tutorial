@@ -34,11 +34,9 @@ contextTester.nestedOne.nestedTwo.test3 = contextTester.childTest;
 
 checker.context.contextChecker(contextTester);
 
-// Uzupełnij metody atrybuty w taki sposób aby po kliknięciu w 'button1' wypisany został button
-// natomiast po kliknięciu 'button2' ma zostać wyświetlony 'window' (w node js 'global')
+// Uzupełnij metody atrybuty w taki sposób aby po kliknięciu w 'button1' zwrócił obiekt button
 
 var button1 = '<button onclick="">button1</button>';
-var button2 = '<button onclick="">button2</button>';
 
-checker.context.buttons(button1, button2);
+checker.context.buttons(button1);
 

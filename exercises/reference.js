@@ -1,7 +1,7 @@
 var checker = require('./helpers/checker');
 
 // Popraw funkcję 'createUserBasedOnWithName' w taki sposób aby tworzyła nowy obiekt na podstawie
-// innego obieku i zmieniała właściwość 'name' na wartość podaną jako 2 argument
+// innego obiektu i zmieniała właściwość 'name' na wartość podaną jako 2 argument
 
 var defaultUser = {
     name: 'default',

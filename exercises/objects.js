@@ -15,14 +15,14 @@ var extendedUser;
 checker.object.userObjectExtend(user, extendedUser);
 
 // stwórz konstruktor Person który będzie 'szkieletem' do tworzenia użytkowników
-// który będzie wykorzystywał obiekt z poprzedniego o poprzedniego zadania
+// który będzie wykorzystywał obiekt z poprzedniego z poprzedniego zadania
 // a następnie przekaż go do checker.object.userConstructor
 
 checker.object.userConstructor(/*Person*/);
 
 // Rozszerz prototyp powyższej klasy w taki sposób zawierała metodę 'iAm'
 // która jako wynik zwróci string w postaci 'I am $name from $team team'
-// dla danych { name: 'Piotr', team: 'PPP' } wynik będzie 'I am Piotr from PPP team'
+// dla danych { name: 'Piotr', team: 'PPP' } wynik powinien być następujący 'I am Piotr from PPP team'
 
 checker.object.userPrototype(/*Person*/);
 

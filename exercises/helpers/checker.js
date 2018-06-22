@@ -100,7 +100,7 @@ module.exports = {
 
             logger.ok();
         },
-        buttons(button1, button2) {
+        buttons(button1) {
             let hasError = false;
             logger.title = 'Node handlers';
             const regex = /onclick="(.*)"/gi;
@@ -109,14 +109,6 @@ module.exports = {
 
             if(!button1ClickResult || button1ClickResult.valueOf() !== button1) {
                 logger.error('button1 -> click handler not return button itself');
-                hasError = true;
-            }
-
-            const button2ClickBody = regex.exec(button2)[1] ;
-            const button2ClickResult = eval(`(function(){ return ${button2ClickBody} })`).call(button2);
-
-            if(!button2ClickResult || button2ClickResult !== global) {
-                logger.error('button2 -> context should be equal to window (or global in node)');
                 hasError = true;
             }
 
@@ -322,11 +314,12 @@ module.exports = {
             const countTotalPriceSourceString = order.countTotalPrice.valueOf().toString();
 
             if(order.totalPrice !== expectedPrice) {
-                logger.error(`Expected price is ${expectedPrice} but got ${order.totalPrice}`);
+                logger.error(`Expected price in order object is ${expectedPrice} but got ${order.totalPrice}`);
                 return;
             }
 
-            if(countTotalPriceSourceString.indexOf('fakeApi.getCartItems().then(items =>') === -1) {
+            if(countTotalPriceSourceString.indexOf('fakeApi.getCartItems().then(items =>') === -1
+            && countTotalPriceSourceString.indexOf('fakeApi.getCartItems().then((items) =>') === -1) {
                 logger.error('You should use arrow function, not change function body');
                 return;
             }

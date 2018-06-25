@@ -123,7 +123,8 @@
 
 .var,
 .let,
-.const {
+.const,
+.header-keyword {
     transition-property: color, transform;
     transition-duration: 300ms;
     transition-timing-function: ease-out;
@@ -132,6 +133,7 @@
 
 .var.inactive,
 .let.inactive,
+.header-keyword.inactive,
 .const.inactive {
     color: #c27c00;
     transform: scale(.7);
@@ -139,7 +141,9 @@
 
 .past .var.inactive,
 .past .let.inactive,
-.past .const.inactive {
+.past .header-keyword,
+.past .const.inactive,
+.future .header-keyword {
     color: inherit;
 }
 
@@ -201,7 +205,6 @@
 
 .reveal a.source {
     display: inline-block;
-    margin-top: 65px;
     bottom: 0;
     font-size: 15px;
     width: 100%;
@@ -212,3 +215,35 @@
 .reveal a.source:before {
     content: attr(href);
 }
+
+.extend-args,
+.args-bindArgs,
+.args-args {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    top: 5px;
+    transition: max-width 500ms ease-out;
+}
+
+.args-bindArgs,
+.switch-args .extend-args,
+.switch-args .args-args {
+    max-width: 200px;
+}
+
+.switch-args .args-bindArgs {
+     max-width: 0;
+    transition-delay: 600ms;
+}
+
+.extend-args {
+    max-width: 0;
+}
+
+.args-args {
+    transition-delay: 1200ms;
+    max-width:0
+}
+

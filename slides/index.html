@@ -38,23 +38,41 @@
             <li class="first" data-type="introduced">Wstęp</li>
             <li data-type="type">Typy</li>
             <li data-type="errors">Typy błędów</li>
+            <li data-type="templates">Template Literals</li>
             <li data-type="spread">Rest/Spread</li>
 
             <li data-type="constLet" class="header-keyword"><span class="var">var</span> &nbsp; <span class="let">let</span> &nbsp; <span class="const">const</span></li>
             <li data-type="functionType">Funkcje</li>
             <li data-type="context" class="header-keyword">this</li>
 
+            <li data-type="applyCall"><span class="header-keyword apply">apply</span> &nbsp; <span class="header-keyword call">call</span></li>
+            <li data-type="binding" class="header-keyword">bind</li>
             <li data-type="object">Obiekty</li>
             <li data-type="reference">Referencja</li>
-            <li data-type="binding" class="header-keyword">bind</li>
 
             <li data-type="end">Koniec</li>
         </ul>
 
 
         <section data-state="introduced">
-            <h2>Szkolenie JS</h2>
-            <p>podstawy</p>
+            <section>
+                <h2>Szkolenie JS</h2>
+                <p>podstawy</p>
+            </section>
+            <section>
+                <ul>
+                    <li class="fragment">typy danych</li>
+                    <li class="fragment">typy błędów</li>
+                    <li class="fragment">szablony</li>
+                    <li class="fragment">rest / spred operator</li>
+                    <li class="fragment">jak działa <span class="keyword">var</span>, <span class="keyword">let</span> i <span class="keyword">const</span></li>
+                    <li class="fragment">funkcje</li>
+                    <li class="fragment">kontekst funkcji</li>
+                    <li class="fragment">manipulacje funkcjami</li>
+                    <li class="fragment">obiekty</li>
+                    <li class="fragment">referencje</li>
+                </ul>
+            </section>
         </section>
 
         <section data-state="type">
@@ -95,6 +113,21 @@
                     <span class="fragment element-log">'number'</span>
                 </code></pre>
             </section>
+            <section>
+                <h3 class="slide-es6"></h3>
+                <h3 >Symbols</h3>
+
+                <pre><code class="hljs">
+                    <span class="fragment">> var mySymbol = Symbol();</span>
+                    <span class="fragment">> var yourSymbol = Symbol('some text');</span>
+                    <span class="fragment">> Symbol('some text') === Symbol('some text');</span>
+                    <span class="fragment">false</span>
+                </code></pre>
+
+                <a href="http://es6-features.org/#SymbolType" class="source"></a>
+                <a href="http://es6-features.org/#GlobalSymbols" class="source"></a>
+                <a href="https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Obiekty/Symbol11" class="source"></a>
+            </section>
         </section>
 
         <section data-state="errors">
@@ -102,8 +135,8 @@
 
             <section>
                 <ul>
-                    <li>semantyczne (składniowe)</li>
-                    <li>logiczne</li>
+                    <li class="fragment">semantyczne (składniowe)</li>
+                    <li class="fragment">logiczne</li>
                 </ul>
             </section>
             <section>
@@ -113,7 +146,7 @@
                     > functon add(number1, number2) {
                         return number1 + number2;
                     }
-                    <span class="element-log">Uncaught SyntaxError: Unexpected identifier</span>
+                    <span class="fragment element-log">Uncaught SyntaxError: Unexpected identifier</span>
                 </code></pre>
             </section>
             <section>
@@ -124,8 +157,32 @@
                         return number1 - number2;
                     }
                     > add(5, 10);
-                    <span class="element-log">-5</span>
+                    <span class="fragment element-log">-5</span>
                 </code></pre>
+            </section>
+        </section>
+
+        <section data-state="templates">
+            <h3 class="slide-es6" style="margin: 50px 0 0 0;"></h3>
+
+            <section>
+                <pre><code>
+                    <span class="fragment">> var oneLine = `I am in one line`;</span>
+                    <span class="fragment">> var multiLines = `I
+                    am
+                    multi
+                    lines`;</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code>
+                    <span class="fragment">var name = 'Shaggy';</span>
+                    <span class="fragment">var oldStringWithVariable = 'My name is ' + name;</span>
+                    <span class="fragment">var newStringWithVariable = `My name is ${name}`;</span>
+                </code></pre>
+            </section>
+            <section>
+                <a href="https://css-tricks.com/template-literals/">https://css-tricks.com/template-literals/</a>
             </section>
         </section>
 
@@ -209,6 +266,18 @@
                     }
                     > log();
                     <span class="fragment element-log">'I need a hamster'</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+                    > function log() {
+                        if(false) {
+                            var message = 'I need a hamster';
+                        }
+                        console.log(message);
+                    }
+                    > log();
+                    <span class="fragment element-log">undefined</span>
                 </code></pre>
             </section>
             <section>
@@ -321,9 +390,7 @@
                 <pre><code class="hljs">
                     > const immutableArray = [1, 2, 3, 400];
                     > function change(arrayToChange) {
-                        try{
-                            arrayToChange.pop();
-                        } catch(e) {}
+                        arrayToChange.pop();
                     }
                     > change(immutableArray);
                     > immutableArray;
@@ -370,8 +437,9 @@
                     > function add() {
                         var sum = 0;
                         var argIndex;
+                        <span class="fragment" style="position: absolute; top: 146px; left: 494px;">arguments</span>
                         <span class="fragment">
-                        for (argIndex in arguments) {
+                        for (argIndex in <span style="visibility: hidden;">arguments</span>) {
                             sum += arguments[argIndex];
                         }
                         </span>
@@ -425,6 +493,9 @@
                     };
                 </code></pre>
             </section>
+            <section>
+                <img src="assets/lets-code.png" alt="let's code" class="lets-code">
+            </section>
         </section>
 
         <section data-state="context">
@@ -453,7 +524,7 @@
             <section>
                 <pre><code class="hljs">
                 > document.getElementById('save')
-                          .addEventListener(function() {
+                          .addEventListener('click', function() {
                               console.log(this);
                           });
                 <span class="fragment element-log">&lt;button&gt;Save&lt;/button&gt;</span>
@@ -512,6 +583,119 @@
                     returned the window object.
                 </div>
                 <a  class="source" href="https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Operatory/this#Simple_call"></a>
+            </section>
+            <section>
+                <img src="assets/lets-code.png" alt="let's code" class="lets-code">
+            </section>
+        </section>
+
+        <section data-state="applyCall">
+            <section data-state="applyCall">
+                <pre class="fragment"><code class="hljs">
+                    > var sum = function(num1, num2, num3) {
+                        this.accumulator = num1 + num2 + num3;
+                    }
+                </code></pre>
+            </section>
+            <section data-state="apply">
+                <pre><code class="hljs">
+                    <span class="fragment" data-fragment-index="3">> var accumulatorObj = {};</span>
+                    <span class="fragment" data-fragment-index="1">> sum.apply(<span class="fragment" data-fragment-index="2">accumulatorObj</span>, <span class="fragment">[1, 2,3]</span>);</span>
+                    <span class="fragment">> accumulatorObj</span>
+                    <span class="fragment element-log">{ accumulator: 6 }</span>
+                </code></pre>
+            </section>
+            <section data-state="call">
+                <pre><code class="hljs">
+                    <span class="fragment" data-fragment-index="3">> var accumulatorObj = {};</span>
+                    <span class="fragment" data-fragment-index="1">> sum.call(<span class="fragment" data-fragment-index="2">accumulatorObj</span>, <span class="fragment">1</span>, <span class="fragment">2</span>, <span class="fragment">3</span>);</span>
+                    <span class="fragment">> accumulatorObj</span>
+                    <span class="fragment element-log">{ accumulator: 6 }</span>
+                </code></pre>
+            </section>
+            <section data-state="applyCall">
+                <pre><code class="hljs">
+                    fun.apply(thisArg, [argsArray])
+                </code></pre>
+
+                <pre><code class="hljs">
+                    fun.call(thisArg, arg1, arg2, ...)
+                </code></pre>
+            </section>
+        </section>
+
+        <section data-state="binding">
+            <section>
+            </section>
+
+            <section>
+                <pre><code class="hljs">
+            > var obj = {
+                items: ['item'],
+                logItems: function() {
+                    console.log(this.items);
+                }
+            }
+            > .addEventListener('click', obj.logItems);
+            <span class="fragment element-log">undefined</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+        > var obj = {
+            items: ['item'],
+            logItems: function() {
+                console.log(this.items);
+            }
+        }
+        > .addEventListener('click', obj.logItems.bind(obj));
+        <span class="fragment element-log">['item']</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+                .bind(thisArg[,  arg1[, arg2[, ...]]])
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+        > function multiParams(param1, param2, param3) {
+            console.log(param1, param2, param3);
+        };
+        > var boundMultiParams = multiParams.bind(null, 'p1', 'p2');
+        > boundMultiParams('one');
+        <span class="fragment element-log">'p1' 'p2' 'one'</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+        > var customBind = function (<span class="fragment" data-fragment-index="1">method</span>, <span class="fragment" data-fragment-index="2">context</span>, <span class="fragment" data-fragment-index="3">...bindArgs</span>) {
+            <span class="fragment" data-fragment-index="4">return function (<span class="extend-args">...nestedArgs</span>) {
+                <span class="fragment" data-add-slide-class="switch-args" data-fragment-index="6">var args = bindArgs.concat(nestedArgs);</span>
+                <span class="fragment" data-state="test" data-fragment-index="5">return method.apply(context, <span class="args-bindArgs">bindArgs</span><span class="args-args">args</span>);</span>
+            }</span>
+        }
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+        > function clickHandler(event, constParam) {
+            event.preventDefault();
+            console.log('constParam is', constParam);
+        }
+        > .addEventListener('click', clickHandler.bind(null, 'CONST'));
+        <span class="fragment element-log">Uncaught TypeError: event.preventDefault is not a function</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+        > function clickHandler(constParam, event) {
+            event.preventDefault();
+            console.log('constParam is', constParam);
+        }
+        > .addEventListener('click', clickHandler.bind(null, 'CONST'));
+        <span class="fragment element-log">'constParam is CONST'</span>
+                </code></pre>
             </section>
             <section>
                 <img src="assets/lets-code.png" alt="let's code" class="lets-code">
@@ -711,74 +895,6 @@
                     > function sendToServer(event) { /*...*/ };
                     > document.getElementById('sendButton')
                               .addEventListener(sendToServer);
-                </code></pre>
-            </section>
-            <section>
-                <img src="assets/lets-code.png" alt="let's code" class="lets-code">
-            </section>
-        </section>
-
-        <section data-state="binding">
-            <section>
-            </section>
-
-            <section>
-                <pre><code class="hljs">
-            > var obj = {
-                items: ['item'],
-                logItems: function() {
-                    console.log(this.items);
-                }
-            }
-            > .addEventListener('click', obj.logItems);
-            <span class="fragment element-log">undefined</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-        > var obj = {
-            items: ['item'],
-            logItems: function() {
-                console.log(this.items);
-            }
-        }
-        > .addEventListener('click', obj.logItems.bind(obj));
-        <span class="fragment element-log">['item']</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-                .bind(thisArg[,  arg1[, arg2[, ...]]])
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-        > function multiParams(param1, param2, param3) {
-            console.log(param1, param2, param3);
-        };
-        > var boundMultiParams = multiParams.bind(null, 'p1', 'p2');
-        > boundMultiParams('one');
-        <span class="fragment element-log">'p1' 'p2' 'one'</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-        > function clickHandler(event, constParam) {
-            event.preventDefault();
-            console.log('constParam is', constParam);
-        }
-        > .addEventListener('click', clickHandler.bind(null, 'CONST'));
-        <span class="fragment element-log">Uncaught TypeError: event.preventDefault is not a function</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-        > function clickHandler(constParam, event) {
-            event.preventDefault();
-            console.log('constParam is', constParam);
-        }
-        > .addEventListener('click', clickHandler.bind(null, 'CONST'));
-        <span class="fragment element-log">'constParam is CONST'</span>
                 </code></pre>
             </section>
             <section>

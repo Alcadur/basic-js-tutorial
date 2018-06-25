@@ -39,6 +39,26 @@ Reveal.addEventListener('varLetConst', () => {
     breadcrumbsContainer.querySelector('.let').classList.remove('inactive');
 });
 
+Reveal.addEventListener('apply', () => {
+    breadcrumbsContainer.querySelector('.apply').classList.remove('inactive');
+    breadcrumbsContainer.querySelector('.call').classList.add('inactive');
+});
+Reveal.addEventListener('call', () => {
+    breadcrumbsContainer.querySelector('.apply').classList.add('inactive');
+    breadcrumbsContainer.querySelector('.call').classList.remove('inactive');
+});
+
+Reveal.addEventListener('applyCall', () => {
+    breadcrumbsContainer.querySelector('.apply').classList.remove('inactive');
+    breadcrumbsContainer.querySelector('.call').classList.remove('inactive');
+});
+
+Reveal.addEventListener( 'fragmentshown', function( event ) {
+    var addClass = event.fragment.dataset.addSlideClass;
+    if(addClass) {
+        Reveal.getCurrentSlide().classList.add(addClass);
+    }
+});
 
 bindRevealStateEvents();
 

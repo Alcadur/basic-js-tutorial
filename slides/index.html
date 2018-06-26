@@ -42,8 +42,8 @@
             <li data-type="spread">Rest/Spread</li>
 
             <li data-type="constLet" class="header-keyword"><span class="var">var</span> &nbsp; <span class="let">let</span> &nbsp; <span class="const">const</span></li>
-            <li data-type="functionType">Funkcje</li>
             <li data-type="context" class="header-keyword">this</li>
+            <li data-type="functionType">Funkcje</li>
 
             <li data-type="applyCall"><span class="header-keyword apply">apply</span> &nbsp; <span class="header-keyword call">call</span></li>
             <li data-type="binding" class="header-keyword">bind</li>
@@ -60,12 +60,13 @@
                 <p>podstawy</p>
             </section>
             <section>
+                <h3>Agenda</h3>
                 <ul>
                     <li class="fragment">typy danych</li>
                     <li class="fragment">typy błędów</li>
-                    <li class="fragment">szablony</li>
-                    <li class="fragment">rest / spred operator</li>
-                    <li class="fragment">jak działa <span class="keyword">var</span>, <span class="keyword">let</span> i <span class="keyword">const</span></li>
+                    <li class="fragment type-es6">szablony</li>
+                    <li class="fragment type-es6">rest / spred operator</li>
+                    <li class="fragment type-es6">jak działa <span class="keyword">var</span>, <span class="keyword">let</span> i <span class="keyword">const</span></li>
                     <li class="fragment">funkcje</li>
                     <li class="fragment">kontekst funkcji</li>
                     <li class="fragment">manipulacje funkcjami</li>
@@ -194,7 +195,7 @@
                 <h4 class="slide-es6"></h4>
                 <pre><code class="hljs">
                     <span class="fragment">> var values = [4, 5, 6, 7, 8, 9];</span>
-                    <span class="fragment">> var digits = [1, 2, 3, ...values];</span>
+                    <span class="fragment">> var digits = [1, 2, 3, <span class="fragment">...values</span>];</span>
                     <span class="fragment">> digits;</span>
                     <span class="fragment">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
                 </code></pre>
@@ -207,7 +208,7 @@
 -->                > joinChars('M', 'y', ' ', 'n', 'a', 'm', 'e');<!--
                     --></span>
                     <span style="order: 1;" class="fragment">
-                > function joinChars(...chars) {
+                > function joinChars(<span class="fragment">...chars</span>) {
                     return chars.join('')
                 }<!--
                     --></span><!--
@@ -288,6 +289,20 @@
             </section>
             <section data-state="var">
                 <img src="assets/hoisting-wyjasnienie.png" alt="hoisting" style="width: 70%;">
+            </section>
+            <section>
+                <pre><code class="hljs">
+                    > function log() {
+                        var message;
+
+                        if(false) {
+                            message = 'I need a hamster';
+                        }
+                        console.log(message);
+                    }
+                    > log();
+                    <span class="fragment element-log">undefined</span>
+                </code></pre>
             </section>
 
             <section data-state="let">
@@ -399,6 +414,97 @@
             </section>
         </section>
 
+        <section data-state="context">
+            <section></section>
+            <section>
+                <pre><code class="hljs">
+                > function increaseSumBy(value) {
+                    this.sum += value;
+                    return this.sum;
+                }
+                > increaseSumBy(5);
+                <span class="fragment element-log">NaN</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+                > function increaseSumBy(value) {
+                    this.sum += value;
+                    return this.sum;
+                }
+                > var obj = { sum: 5, increase: increaseSumBy }
+                > obj.increase(5);
+                <span class="fragment element-log">10</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+                > document.getElementById('save')
+                          .addEventListener('click', function() {
+                              console.log(this);
+                          });
+                <span class="fragment element-log">&lt;button&gt;Save&lt;/button&gt;</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+        > &lt;button onclick="console.log(this);"&gt;Save&lt;/button&gt;
+        <span class="fragment element-log">&lt;button onclick="console.log(this);"&gt;Save&lt;/button&gt;</span>
+                </code></pre>
+            </section>
+            <section>
+                <pre><code class="hljs">
+                    > var obj1 = {
+                        value: 10,
+                        getValue: function() {
+                            return this.value;
+                        }
+                    };
+                    <span class="fragment">> obj1.value === obj1.getValue();</span>
+                    <span class="fragment element-log">true</span>
+                    > var obj2 = {
+                        value: 20,
+                        getValue: obj1.getValue
+                    };
+                    <span class="fragment">> obj2.value === obj2.getValue();</span>
+                    <span class="fragment element-log">true</span>
+                </code></pre>
+            </section>
+            <section>
+                <h3>strict mode</h3>
+
+                <pre class="fragment"><code class="hljs">
+                    > function logContext1() {
+                        console.log(this)
+                    }
+                    > logContext1();
+                    <span class="fragment element-log">window</span>
+                </code></pre>
+                <pre class="fragment"><code class="hljs">
+                    > 'use strict';
+                    > function logContext2() {
+                        console.log(this)
+                    }
+                    > logContext2();
+                    <span class="fragment element-log">undefined</span>
+                </code></pre>
+            </section>
+            <section>
+                <h3>strict mode</h3>
+
+                <div class="warning-message">
+                    In the second example, this should be <span class="keyword">undefined</span>, because <span class="keyword">logContext2</span> was called directly and
+                    not as a method or property of an object (e.g. <span class="keyword">window.logContext2()</span>). This feature <span class="bold">wasn't</span> implemented
+                    in some browsers when they first started to support strict mode. As a result, they incorrectly
+                    returned the window object.
+                </div>
+                <a  class="source" href="https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Operatory/this#Simple_call"></a>
+            </section>
+            <section>
+                <img src="assets/lets-code.png" alt="let's code" class="lets-code">
+            </section>
+        </section>
+
         <section data-state="functionType">
             <section>
                 <pre><code class="hljs">
@@ -492,97 +598,6 @@
                         fun2() { /* ... */ }
                     };
                 </code></pre>
-            </section>
-            <section>
-                <img src="assets/lets-code.png" alt="let's code" class="lets-code">
-            </section>
-        </section>
-
-        <section data-state="context">
-            <section></section>
-            <section>
-                <pre><code class="hljs">
-                > function increaseSumBy(value) {
-                    this.sum += value;
-                    return this.sum;
-                }
-                > increaseSumBy(5);
-                <span class="fragment element-log">NaN</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-                > function increaseSumBy(value) {
-                    this.sum += value;
-                    return this.sum;
-                }
-                > var obj = { sum: 5, increase: increaseSumBy }
-                > obj.increase(5);
-                <span class="fragment element-log">10</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-                > document.getElementById('save')
-                          .addEventListener('click', function() {
-                              console.log(this);
-                          });
-                <span class="fragment element-log">&lt;button&gt;Save&lt;/button&gt;</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-        > &lt;button onclick="console.log(this);"&gt;Save&lt;/button&gt;
-        <span class="fragment element-log">&lt;button onclick="console.log(this);"&gt;Save&lt;/button&gt;</span>
-                </code></pre>
-            </section>
-            <section>
-                <pre><code class="hljs">
-                    > var obj1 = {
-                        value: 10,
-                        getValue: function() {
-                            return this.value;
-                        }
-                    };
-                    <span class="fragment">> obj1.value === obj1.getValue();</span>
-                    <span class="fragment element-log">true</span>
-                    > var obj2 = {
-                        value: 20,
-                        getValue: obj1.getValue
-                    };
-                    <span class="fragment">> obj2.value === obj2.getValue();</span>
-                    <span class="fragment element-log">true</span>
-                </code></pre>
-            </section>
-            <section>
-                <h3>strict mode</h3>
-
-                <pre class="fragment"><code class="hljs">
-                    > function logContext1() {
-                        console.log(this)
-                    }
-                    > logContext1();
-                    <span class="fragment element-log">window</span>
-                </code></pre>
-                <pre class="fragment"><code class="hljs">
-                    > 'use strict';
-                    > function logContext2() {
-                        console.log(this)
-                    }
-                    > logContext2();
-                    <span class="fragment element-log">undefined</span>
-                </code></pre>
-            </section>
-            <section>
-                <h3>strict mode</h3>
-
-                <div class="warning-message">
-                    In the second example, this should be <span class="keyword">undefined</span>, because <span class="keyword">logContext2</span> was called directly and
-                    not as a method or property of an object (e.g. <span class="keyword">window.logContext2()</span>). This feature <span class="bold">wasn't</span> implemented
-                    in some browsers when they first started to support strict mode. As a result, they incorrectly
-                    returned the window object.
-                </div>
-                <a  class="source" href="https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Operatory/this#Simple_call"></a>
             </section>
             <section>
                 <img src="assets/lets-code.png" alt="let's code" class="lets-code">

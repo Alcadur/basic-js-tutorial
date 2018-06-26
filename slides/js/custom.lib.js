@@ -54,9 +54,22 @@ Reveal.addEventListener('applyCall', () => {
 });
 
 Reveal.addEventListener( 'fragmentshown', function( event ) {
-    var addClass = event.fragment.dataset.addSlideClass;
+    var dataSet = event.fragment.dataset;
+    var addClass = dataSet.addSlideClassOnShow;
+    var removeClass = dataSet.addSlideClassOnHide;
     if(addClass) {
         Reveal.getCurrentSlide().classList.add(addClass);
+        Reveal.getCurrentSlide().classList.remove(removeClass);
+    }
+});
+
+Reveal.addEventListener( 'fragmenthidden', function( event ) {
+    var dataSet = event.fragment.dataset;
+    var addClass = dataSet.addSlideClassOnHide;
+    var removeClass = dataSet.addSlideClassOnShow;
+    if(addClass) {
+        Reveal.getCurrentSlide().classList.add(addClass);
+        Reveal.getCurrentSlide().classList.remove(removeClass);
     }
 });
 

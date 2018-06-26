@@ -686,7 +686,7 @@
                 <pre><code class="hljs">
         > var customBind = function (<span class="fragment" data-fragment-index="1">method</span>, <span class="fragment" data-fragment-index="2">context</span>, <span class="fragment" data-fragment-index="3">...bindArgs</span>) {
             <span class="fragment" data-fragment-index="4">return function (<span class="extend-args">...nestedArgs</span>) {
-                <span class="fragment" data-add-slide-class="switch-args" data-fragment-index="6">var args = bindArgs.concat(nestedArgs);</span>
+                <span class="fragment" data-add-slide-class-on-show="show-args" data-add-slide-class-on-hide="hide-args"  data-fragment-index="6">var args = bindArgs.concat(nestedArgs);</span>
                 <span class="fragment" data-state="test" data-fragment-index="5">return method.apply(context, <span class="args-bindArgs">bindArgs</span><span class="args-args">args</span>);</span>
             }</span>
         }

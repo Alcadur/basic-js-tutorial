@@ -228,18 +228,26 @@
 }
 
 .args-bindArgs,
-.switch-args .extend-args,
-.switch-args .args-args {
+.show-args .extend-args,
+.show-args .args-args {
     max-width: 200px;
 }
 
-.switch-args .args-bindArgs {
-     max-width: 0;
+.show-args .args-bindArgs {
+    max-width: 0;
     transition-delay: 600ms;
+}
+
+.hide-args .args-bindArgs {
+    transition-delay: 700ms;
 }
 
 .extend-args {
     max-width: 0;
+}
+
+.hide-args .args-args {
+    transition-delay: 300ms;
 }
 
 .args-args {

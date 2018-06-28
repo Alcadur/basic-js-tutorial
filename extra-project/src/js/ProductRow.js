@@ -2,6 +2,7 @@ import ProductAmountSwitcher from './ProductAmountSwitcher';
 import summaryService from './summaryService';
 
 function ProductRow (productId, productName, price) {
+    // TODO: zastąpić przekazywany ID w taki aby zapewniona była niepowtarzalność
     this.id = productId;
     this.price =  price;
     this.name = productName;
@@ -19,6 +20,8 @@ ProductRow.prototype.getNode = function () {
     const productColorImg = require('../assets/products/product-' + this.id + '-color.jpg');
     const section = document.createElement('section');
     section.className = 'row';
+
+    // TODO: zastąp łączenie stringów 'nowym szablonem'
     section.innerHTML =
         '            <div class="cell-checkbox"><input type="checkbox"></div>' +
         '            <div class="cell-1"><img src="' + productImg + '" alt="product"></div>' +
@@ -48,9 +51,14 @@ ProductRow.prototype.updateTotalPrice = function() {
     this.container.querySelector('.price').textContent = this.getTotalPrice();
 };
 
+// TODO[extra]: naprawić błąd z wyliczaniem się ceny
+// Podpowiedź: błąd jest związany z binarną arytmetyką zmiennoprzecinkową
+// wbrew pozorom rozwiązanie jest dość proste :)
 ProductRow.prototype.getTotalPrice = function() {
     return this.price * this.amount
 };
+
+// TODO[extra]: należy dopisać i podpiąć metodę usuwającą produkt
 
 export default ProductRow;
 

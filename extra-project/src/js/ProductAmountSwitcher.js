@@ -1,11 +1,9 @@
-/**
- *
- * @param {ProductRow} product
- * @constructor
- */
 function ProductAmountSwitcher (product) {
     this.product = product;
     this.container = null;
+
+    // TODO: zmienić miejsce deklaracji metod w taki sposób aby
+    // podczas tworzenia instancji nie były tworzone kopie metod
 
     this.increase = function() {
         this.product.setAmount(product.amount + 1);
@@ -20,15 +18,19 @@ function ProductAmountSwitcher (product) {
             return this.container;
         }
 
+        //TODO: zmień sposób deklaracji
         var container = document.createElement('div');
         container.className = 'amountBox';
 
+        // TODO: zastąp łączenie stringów 'nowym szablonem'
         container.innerHTML =
             '<span class="decrease">-</span>' +
             '<input type="text" value="1">' +
             '<span class="increase">+</span>';
 
-        container.querySelector('.decrease').addEventListener('click', this.decrease.bind(this));
+        // TODO: zastąp bind w taki sposób aby metody nadal były wywoływane w odniesieniu do this
+        // Przykładowe wywołanie: this.decrease()
+        container.querySelector('.decrease').addEventListener('click', this.decrease.bind(this) );
         container.querySelector('.increase').addEventListener('click', this.increase.bind(this));
 
         this.container = container;

@@ -1,5 +1,8 @@
+// TODO: zastąp deklarację metod krótszą formą
 const summaryService = {
     updateTotalPriceBy: function (product1, product2, product3) {
+        // TODO: zmień deklarację zmiennej na const lub let
+        // Podpowiedź: choose wisely :)
         var totalPrice = 0;
         totalPrice += product1.getTotalPrice();
         totalPrice += product2.getTotalPrice();
@@ -10,7 +13,7 @@ const summaryService = {
     /**
      * ustawiane w index.js
      */
-    updateTotalPriceByBind: {}
+    updateTotalPriceByBind: function() {}
 };
 
 export default summaryService;

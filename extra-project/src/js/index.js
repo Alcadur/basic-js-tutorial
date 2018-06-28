@@ -17,12 +17,11 @@ appendUnderHeader(product1.getNode());
 appendUnderHeader(product2.getNode());
 appendUnderHeader(product3.getNode());
 
-summaryService.updateTotalPriceByBind = summaryService.updateTotalPriceBy.bind(null, product1, product2, product3);
+// TODO: sprawdzić czemu nie aktualizuje się cena w podsumowaniu
+// Podpowiedź: w rozwiązaniu warto rozważyć wykorzystanie bind
+
 summaryService.updateTotalPriceBy(product1, product2, product3);
 
-/**
- * @param {ProductRow} product
- */
 function appendUnderHeader(productNode) {
     const header = main.querySelector('#afterLastProductRow');
     main.insertBefore(productNode, header);

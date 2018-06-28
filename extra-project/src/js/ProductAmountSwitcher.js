@@ -1,4 +1,4 @@
-// TODO: czy można przepisać ten obiekt w taki sposób aby nie rzeba było tworzyć za każdym razem jego instancji?
+// TODO: czy można przepisać ten obiekt w taki sposób aby nie trzeba było tworzyć za każdym razem jego instancji?
 function ProductAmountSwitcher (product) {
     this.product = product;
     this.container = null;

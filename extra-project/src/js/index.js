@@ -2,6 +2,7 @@ import '../scss/main.scss';
 import ProductRow from './ProductRow';
 import summaryService from './summaryService';
 
+//TODO: naprawić zliczanie ilości elementów w koszyku
 document.addEventListener('click', () => {
     const cart = document.querySelector('.cart');
     cart.dataset.count = (+cart.dataset.count + 1).toString();

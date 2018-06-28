@@ -47,3 +47,28 @@ Plik odpowiadający za odpowiednie wyświetlenie jednego wiersza z produktem i a
 Zawartość pliku odpowiada za naliczanie ceny końcowej która wyświetlana się w podsumowaniu
 
 ##3. Zadania
+Wszystkie zadania w projekcie poprzedzone są `TODO` co w PS pozwala je znaleźć w łatwy sposób używając
+do tego okna które nazywa się `TODO`.
+
+W razie jednak nie posiadania takiego narzędzia poniżej znajduje się opis wszystkich zadań która zostały przewidziane
+wraz z plikami i nr linii w których znajduje się znacznik `TODO`
+
+- `index.js`
+   - 5: naprawić zliczanie ilości elementów w koszyku
+   - 21: sprawdzić czemu nie aktualizuje się cena w podsumowaniu
+- `ProductAmountSwitcher.js`
+   - 1: czy można przepisać ten obiekt w taki sposób aby nie trzeba było tworzyć za każdym razem jego instancji?
+   - 6: zmienić miejsce deklaracji metod w taki sposób aby
+   - 22: zmień sposób deklaracji
+   - 26: zastąp łączenie stringów 'nowym szablonem'
+   - 32: zastąp bind w taki sposób aby metody nadal były wywoływane w odniesieniu do this
+- `ProductRow.js`
+   - 5: zastąpić przekazywany ID w taki aby zapewniona była niepowtarzalność
+   - 24: zastąp łączenie stringów 'nowym szablonem'
+   - 54: *naprawić błąd z wyliczaniem się ceny
+   - 61: *należy dopisać i podpiąć metodę usuwającą produkt
+- `summaryService.js`
+   - 1: zastąp deklarację metod krótszą formą
+   - 4: zmień deklarację zmiennej na const lub let
+
+Zadania które poprzedzone są `*` (w tym pliku i `[extra]` w źródle) mogą wymagać informacji które nie zostały przedstawione w materiałach szkoleniowych

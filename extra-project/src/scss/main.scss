@@ -1,0 +1,19 @@
+@import "commonVariable";
+
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    height: 60px;
+    border-bottom: 1px solid #EBEAE7;
+    align-items: center;
+}
+
+@import "buttons";
+@import "nav";
+@import "aside";
+@import "amountBox";
+@import "content";
+@import "summary";

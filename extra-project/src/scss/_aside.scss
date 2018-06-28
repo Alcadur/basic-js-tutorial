@@ -1,0 +1,42 @@
+@import "commonVariable";
+
+body > aside {
+    width: $asideWidth;
+    display: inline-block;
+    box-sizing: border-box;
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        $borderColor: #ecebe8;
+
+        text-transform: uppercase;
+        border-bottom: 1px solid $borderColor;
+        padding: 40px 18px;
+
+        &:first-child {
+            border-top: 1px solid $borderColor;
+        }
+    }
+
+    &.info-column {
+        li {
+            background: no-repeat 70%/18%;
+        }
+
+        li:nth-child(1) {
+            background-image: url("../assets/box.svg");
+        }
+
+        li:nth-child(2) {
+            background-image: url("../assets/calendar.svg");
+        }
+
+        li:nth-child(3) {
+            background-image: url("../assets/padlock.svg");
+        }
+    }
+}

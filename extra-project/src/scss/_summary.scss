@@ -1,0 +1,52 @@
+body > main {
+    .discount {
+        box-sizing: border-box;
+        padding: 11px 11px 11px 59px;
+        width: 100%;
+        margin-right: 20px;
+        background: url("../assets/ticket.svg") no-repeat 11px center;
+        background-size: contain;
+        border: 1px solid #d7d4d1;
+    }
+
+    .summary {
+        font-size: 12px;
+    }
+
+    .total-price {
+        font-size: 20px;
+    }
+
+    .delivery-cost {
+        font-size: 18px;
+    }
+
+    section.column {
+        .total-price-container,
+        .delivery-container {
+            align-items: baseline;
+        }
+    }
+
+    .order-row {
+        margin-bottom: 10px;
+    }
+
+    .delivery-container {
+        .currency {
+            font-size: 12px;
+        }
+    }
+
+    .total-price-container {
+        color: #e83e3e;
+
+        .currency {
+            font-size: 14px;
+        }
+    }
+
+    .currency {
+        text-transform: uppercase;
+    }
+}

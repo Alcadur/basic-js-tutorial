@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reserved cart</title>
+</head>
+<body>
+    <header>
+        <img src="assets/logo.svg" alt="logo" class="logo">
+        <nav>
+            <ul class="menu">
+                <li>wyprzedaż do -50%</li>
+                <li>ona</li>
+                <li>on</li>
+                <li>kids</li>
+                <li>kampania</li>
+                <li>re.design</li>
+            </ul>
+            <aside>
+                <ul class="user-actions">
+                    <li class="account">twoje konto</li>
+                    <li class="search"></li>
+                    <li class="cart" data-count="0"><span class="price">0,00</span>&nbsp;<span class="currency">PLN</span></li>
+                    <li class="language">PL</li>
+                </ul>
+            </aside>
+        </nav>
+    </header>
+    <main>
+        <header class="row">
+            <div class="cell-6">
+                <h3>Koszyk</h3>
+                <h5>Nie zwlekaj z zakupem, dodanie artykułów do koszyka nie oznacza ich rezerwacji</h5>
+            </div>
+            <div class="cell-1 text-to-right">
+                <button class="btn btn-main">Zamówienie</button>
+            </div>
+        </header>
+        <section class="row table-header">
+            <div class="cell-2"><input type="checkbox"></div>
+            <div class="cell-2">Produkt</div>
+            <div class="cell-1">Szczegóły</div>
+            <div class="cell-1">Liczba szt.</div>
+            <div class="cell-1">Cena łącznie</div>
+        </section>
+        <section class="row" id="afterLastProductRow">
+            <div class="cell-2">
+                <button class="btn btn-second">Usuń zaznaczone</button>
+            </div>
+            <div class="cell-1"></div>
+            <div class="cell-1">Masz kod rabatowy</div>
+            <div class="cell-2"><input type="text" class="discount" placeholder="Wpisz kod rabatowy"></div>
+            <div class="cell-1">
+                <button class="btn btn-second">Dodaj kupon</button>
+            </div>
+        </section>
+        <section class="column summary">
+            <div class="cell-7">
+                <div class="cell-5 text-to-right">Suma:</div>
+                <div class="cell-2 text-to-right total-price-container"><span class="total-price">0</span>&nbsp;<span class="currency">PLN</span></div>
+            </div>
+            <div class="cell-7">
+                <div class="cell-5 text-to-right">Przewidywany koszt dostawy:</div>
+                <div class="cell-2 text-to-right delivery-container">Od&nbsp;<span class="delivery-cost">0,00</span>&nbsp;<span class="currency">PLN</span></div>
+            </div>
+        </section>
+        <section class="column">
+            <div class="cell-7 text-to-right order-row">
+                <button class="btn btn-main">Zamówienie</button>
+            </div>
+            <div class="cell-7 text-to-right">
+                <button class="btn btn-second">Wróć do zakupów</button>
+            </div>
+        </section>
+    </main><!--
+    --><aside class="info-column">
+        <ul>
+            <li>darmowa dostawa <br> powyżej 150 pln</li>
+            <li>30 dni <br> na zwrot </li>
+            <li>twoje dane <br> są bezpieczne</li>
+        </ul>
+    </aside>
+</body>
+</html>

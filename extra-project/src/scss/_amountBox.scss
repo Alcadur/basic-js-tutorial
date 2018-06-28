@@ -1,0 +1,23 @@
+.amountBox {
+    display: flex;
+    border: 1px solid #d7d4d1;
+
+    .decrease,
+    .increase,
+    input {
+        display: inline-block;
+        box-sizing: border-box;
+        border: 0;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+    }
+
+    .decrease,
+    .increase {
+        background: #f4f3f1;
+        color: #615e5b;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}

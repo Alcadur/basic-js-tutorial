@@ -1,0 +1,99 @@
+@import "commonVariable";
+
+body > main {
+    width: calc(100% - #{$asideWidth});
+    display: inline-flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background: #FAF9F8;
+    vertical-align:top;
+    padding: 20px 18px;
+
+    header {
+        border: 0;
+    }
+
+    .table-header.row {
+        border-top: 1px solid #D7D5D4;
+    }
+
+    .column,
+    .row {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+    }
+
+    section.column,
+    section.row {
+        border-bottom: 1px solid #D7D5D4;
+        padding: 20px 0;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        [class*="cell-"] {
+            display: inline-flex;
+            align-items: center;
+        }
+    }
+
+    section.column {
+        flex-direction: column;
+    }
+
+    $maxColumnsNumber: 7;
+    $oneColumnWidth: 100/$maxColumnsNumber;
+
+    @for $i from 1 through $maxColumnsNumber
+    {
+        .cell-#{$i} {
+            width: percentage($oneColumnWidth * $i/100);
+        }
+    }
+
+
+
+    h3 {
+        font-size: 20px;
+        font-weight: 300;
+        margin: 0 0 20px;
+    }
+
+    h5 {
+        font-size: 12px;
+        color: #7d7c7a;
+        font-weight: 300;
+        margin: 0;
+    }
+
+    .text-to-right {
+        text-align: right;
+        justify-content: flex-end;
+    }
+
+    .remove {
+        &:before {
+            $size: 24px;
+            content: '';
+            display: inline-block;
+            width: $size;
+            height: $size;
+            background: url("../assets/trash.svg") no-repeat;
+            background-size: contain;
+        }
+    }
+
+    .column {
+        flex-direction: column;
+        justify-content: center;
+        align-items: normal !important;
+    }
+
+    img.color {
+        $size: 12px;
+        width: $size;
+        height: $size;
+    }
+}

@@ -138,6 +138,7 @@
                 <ul>
                     <li class="fragment">semantyczne (składniowe)</li>
                     <li class="fragment">logiczne</li>
+                    <li class="fragment">runtime (w czasie działania aplikacji)</li>
                 </ul>
             </section>
             <section>
@@ -159,6 +160,17 @@
                     }
                     > add(5, 10);
                     <span class="fragment element-log">-5</span>
+                </code></pre>
+            </section>
+            <section>
+                <h4>Runtime</h4>
+
+                <pre><code class="hljs">
+                    > function addToServerNumber(number1) {
+                        return number1 - getNumberFromServer();
+                    }
+                    > addToServerNumber(5);
+                    <span class="fragment element-log">500 (internal server error)</span>
                 </code></pre>
             </section>
         </section>

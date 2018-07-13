@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>speech notes</title>
+</head>
+<body>
+
+<h2>Speech</h2>
+<h4 class="slide-number"></h4>
+
+
+<section id="speechContent">
+    <iframe id="slidePreview" src="" frameborder="0"></iframe>
+    <div id="speech"></div>
+</section>
+
+<script>
+    var slidePreview = document.getElementById('slidePreview');
+    var speech = document.getElementById('speech');
+
+    var params = [
+        'receiver',
+        'progress=false',
+
+        'history=false',
+        'transition=none',
+        'autoSlide=0',
+        'backgroundTransition=none',
+        'controls=false',
+        'postMessageEvents=true'
+    ].join( '&' );
+
+
+    window.addEventListener('message', function(event) {
+        var messageObj;
+        var urlSeparator;
+        var hash;
+
+        try {
+            messageObj = JSON.parse(event.data);
+        } catch (e) {
+            console.log('invalid json string', event.data);
+            return;
+        }
+        if(messageObj.namespace !== 'speech') {
+            return;
+
+        }
+
+        if(messageObj.init) {
+            urlSeparator = /\?/.test(messageObj.url) ? '&' : '?';
+            hash = '#/' + messageObj.state.indexh + '/' + messageObj.state.indexv;
+
+            slidePreview.src = messageObj.url + urlSeparator + params + hash;
+            window.opener.postMessage( JSON.stringify({ namespace: 'reveal-notes', type: 'connected'} ), '*' )
+        }
+
+        slidePreview.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ messageObj.state ] }), '*' );
+
+    });
+</script>
+</body>
+</html>

@@ -303,6 +303,8 @@
                     > log();
                     <span class="fragment element-log">undefined</span>
                 </code></pre>
+
+                <aside class="notes">wygląd poprzedniej funkcji po wykonaniu hoistingu</aside>
             </section>
 
             <section data-state="let">
@@ -328,8 +330,8 @@
             </section>
             <section>
                 <pre><code class="hljs">
-                    > function log(flag) {
-                        if(flag) {
+                    > function log() {
+                        if(false) {
                             let message = 'Flag is set';
                         }
 
@@ -341,42 +343,42 @@
             </section>
             <section>
                 <pre><code class="hljs">
-                    > function log(flag) {
-                        if(flag) {
+                    > function log() {
+                        if(true) {
                             let message = 'Flag is set';
                         }
 
                         console.log(message)
                     }
-                    > log(true);
+                    > log();
                     <span class="fragment element-log">'"message" is not defined'</span>
                 </code></pre>
             </section>
             <section>
                 <pre><code class="hljs">
-                    > function log(flag) {
-                        if(flag) {
+                    > function log() {
+                        if(true) {
                             let message = 'Flag is set';
                             console.log(message);
                         }
 
                     }
-                    > log(true);
+                    > log();
                     <span class="fragment element-log">'Flag is set'</span>
                 </code></pre>
             </section>
             <section>
                 <pre><code class="hljs">
-                    > function log(flag) {
+                    > function log() {
                         let message = 'I will kil You';
 
-                        if(flag) {
+                        if(true) {
                             let message = 'Flag is set';
                         }
 
                         console.log(message);
                     }
-                    > log(true);
+                    > log();
                     <span class="fragment element-log">'I will kill You'</span>
                 </code></pre>
             </section>
@@ -934,7 +936,8 @@
         dependencies: [
             { src: 'lib/js/classList.js' },
             { src: 'js/highlight.js', async: true, callback: () => hljs.initHighlightingOnLoad() },
-            { src: 'js/notes/notes.js', async: true, callback: function () { window.localStorage.setItem('reveal-speaker-layout', 'tall'); } }
+            { src: 'js/notes/notes.js', async: true, callback: function () { window.localStorage.setItem('reveal-speaker-layout', 'tall'); } },
+            { src: 'js/speech/speech.js', async: true }
         ]
     });
 

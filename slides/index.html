@@ -635,13 +635,30 @@
 
 
             <section data-state="const">
+                <aside class="speech">
+                    <p>Jak nie trudno się domyśleć aby zadeklarować stałą należy użyć <u>const</u>.</p>
+                </aside>
                 <pre><code class="hljs">
                     > const message = 'You will not change me.';
-                    > <span class="fragment">message = 'I will hahaha';</span>
-                    <span class="fragment element-log">'Assignment  to constant variable'</span>
+                    > <span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Jak wcześniej wspomniałem zmienne zadeklarowane jako <u>const</u> są traktowane
+                                jako stałe więc powtórne przypisanie do nich wartości…</p>
+                        </aside><!--
+                        -->message = 'I will hahaha';<!--
+                    --></span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>…spowoduje pojawienie się błędu.</p>
+                        </aside><!--
+                        -->'Assignment  to constant variable'<!--
+                    --></span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>To super, możemy teraz tworzyć sobie tablice bez obawy, że ich zawartość zostanie zmieniona czy nadpisana</p>
+                </aside>
                 <pre><code class="hljs">
                     > const immutableArray = [1, 2, 3, 400];
                     > function change(arrayToChange) {
@@ -649,7 +666,15 @@
                     }
                     > change(immutableArray);
                     > immutableArray;
-                    <span class="fragment element-log">[1, 2, 3]</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>No właśnie nie. Można powiedzieć, że <u>cosnt</u> dba o to abyśmy nie nadpisali na nowo już zadeklarowanej zmiennej.</p>
+                            <p>Jednak w przypadku obiektów (tablice też są obiektami) nie jest pilnowana ich zawartość.</p>
+                            <p>Możemy więc zmieniać zawartość obiektu który jest zadeklarowany jako <u>const</u> jednak nie możemy do tej zmiennej
+                            przypisać zupełnie nowej wartości</p>
+                        </aside><!--
+                        -->[1, 2, 3]<!--
+                    --></span>
                 </code></pre>
             </section>
         </section>

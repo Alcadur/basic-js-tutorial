@@ -53,7 +53,7 @@ var SpeechNotes = (function() {
             fragmentSpeech;
 
 
-        if (speechElement.parentElement.classList.contains('fragment')) {
+        if (speechElement && speechElement.parentElement.classList.contains('fragment')) {
             speechElement = undefined;
         }
 

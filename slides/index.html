@@ -495,6 +495,10 @@
             </section>
 
             <section data-state="let">
+                <aside class="speech">
+                    <p>Przejdźmy teraz do <u>let</u>. Deklaracja zmiennej za pomocą <u>let</u> różni się tylko zmianą słowa kluczowego</p>
+                    <p>Więc pewnie nie będzie dla Ciebie zaskoczeniem wynik wywołania.</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         let message = 'Hi';
@@ -505,6 +509,9 @@
                 </code></pre>
             </section>
             <section data-state="let">
+                <aside class="speech">
+                    <p>Jeżeli spróbujemy nadpisać raz zadeklarowaną wartość też wszystko przejdzie gładko.</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         let message = 'Hi';
@@ -516,6 +523,9 @@
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>A co jeżeli zadeklarujemy zmienna wewnątrz warunku który nie zostanie spełniony?</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         if(false) {
@@ -525,10 +535,19 @@
                         console.log(message)
                     }
                     > log();
-                    <span class="fragment element-log">'"message" is not defined'</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>Błąd ten wystąpił ponieważ <u>let</u> i <u>const</u> mają zakres widoczności <b>blokowy</b> a nie <i>funkcyjny</i>.</p>
+                            <p>Oznacza to, że zmienna jest widoczna w bloku <b>od miejsca deklaracji</b> do <b>}</b></p>
+                        </aside><!--
+                        -->'"message" is not defined'<!--
+                    --></span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Skoro mamy już pojęcie o tym jak działa <u>let</u>, czy jesteś w stanie powiedzieć jaki będzie rezultat tego kodu?</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         if(true) {
@@ -538,10 +557,19 @@
                         console.log(message)
                     }
                     > log();
-                    <span class="fragment element-log">'"message" is not defined'</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>Jeżeli zaskoczył Cie fakt, że pojawił się błąd zamiast wartości
+                                przypominam: <u>let</u> ma <b>blokowy</b> zakres widoczności</p>
+                        </aside><!--
+                        -->'"message" is not defined'<!--
+                    --></span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Więc aby nasz kod działał poprawnie musimy przenieść <i>console.log</i> do warunku.</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         if(true) {
@@ -555,6 +583,9 @@
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Ok, a co w przypadku kiedy deklarujemy 2 razy zmienną o tej samej nazwie ale w innych blokach?</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         let message = 'I will kil You';
@@ -566,10 +597,24 @@
                         console.log(message);
                     }
                     > log();
-                    <span class="fragment element-log">'I will kill You'</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>A no nie za wiele, tak jak mówiliśmy wcześniej <u>let</u> jest widoczny per blok kodu.</p>
+                            <p>Co za tym idzie jeżeli zadeklarujemy w innym bloku zmienną która powinna być tam widoczna ponieważ
+                            jest zadeklarowana w bloku nadrzędnym to deklaracja w bloku poniżej nadpisze deklaracje powyżej.
+                            <b>UWAGA</b> nie jest to zmiana wartości zmiennej zadeklarowanej wcześniej. Co widać po wyniku
+                            wywołania metody <i>log</i></p>
+                        </aside><!--
+                        -->'I will kill You'<!--
+                    --></span>
                 </code></pre>
             </section>
             <section data-state="let">
+                <aside class="speech">
+                    <p>To jeżeli możemy nadpisywać deklaracje w różnych blokach zmiennej o tej samej nazwie nawet w przypadku
+                        gdy ich zakresy widoczności się zazębiają to co się stanie jeżeli spróbujemy zadeklarować 2 razy
+                    zmienną o takiej samej nazwie w tym samym bloku?</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         let message = 'I will kill You';
@@ -578,7 +623,13 @@
                         console.log(message);
                     }
                     > log();
-                    <span class="fragment element-log">'Identifier "message" has already been declared'</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>Możemy zmieniać wartość przypisaną do zmiennej zadeklarowanej jako <u>let</u> ale w obrębie
+                            jednego bloku każda zmienna może być zadeklarowana tylko raz.</p>
+                        </aside><!--
+                        -->'Identifier "message" has already been declared'<!--
+                    --></span>
                 </code></pre>
             </section>
 

@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>speech notes</title>
+    <style>
+        #speechContent {
+            display: flex;
+        }
+
+        #slidePreview {
+            margin-right: 15px;
+        }
+
+        u {
+            text-decoration: none;
+            color: #CC7832;
+            font-weight: 700;
+        }
+    </style>
 </head>
 <body>
 
@@ -45,7 +60,6 @@
         }
         if(messageObj.namespace !== 'speech') {
             return;
-
         }
 
         if(messageObj.init) {
@@ -53,8 +67,10 @@
             hash = '#/' + messageObj.state.indexh + '/' + messageObj.state.indexv;
 
             slidePreview.src = messageObj.url + urlSeparator + params + hash;
-            window.opener.postMessage( JSON.stringify({ namespace: 'reveal-notes', type: 'connected'} ), '*' )
+            window.opener.postMessage( JSON.stringify({ namespace: 'speech', type: 'connected'} ), '*' )
         }
+
+        speech.innerHTML = messageObj.speechSynthesis || "";
 
         slidePreview.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ messageObj.state ] }), '*' );
 

@@ -26,6 +26,7 @@ var SpeechNotes = (function() {
             var data = JSON.parse( event.data );
             if( data && data.namespace === 'speech' && data.type === 'connected' ) {
                 clearInterval( connectInterval );
+                sendMessage();
             }
         } );
 
@@ -50,6 +51,11 @@ var SpeechNotes = (function() {
             speechElement = slideElement.querySelector( 'aside.speech' ),
             fragmentElement = slideElement.querySelector( '.current-fragment' ),
             fragmentSpeech;
+
+
+        if (speechElement.parentElement.classList.contains('fragment')) {
+            speechElement = undefined;
+        }
 
         var messageData = {
             namespace: 'speech',

@@ -58,9 +58,17 @@
             <section>
                 <h2>Szkolenie JS</h2>
                 <p>podstawy</p>
+
+                <aside class="speech">
+                    Witam na szkoleniu z JS w zakresie podstawowym, poza samymi podstawami pojawi
+                    się parę ciekawostek.
+                </aside>
             </section>
             <section>
                 <h3>Agenda</h3>
+
+                <aside class="speech">Szybki przegląd tego o czym będziemy dzisiaj mówić, czyli: (patrz główne okno slajdu)</aside>
+
                 <ul>
                     <li class="fragment">typy danych</li>
                     <li class="fragment">typy błędów</li>
@@ -72,31 +80,66 @@
                     <li class="fragment">manipulacje funkcjami</li>
                     <li class="fragment">obiekty</li>
                     <li class="fragment">referencje</li>
+
                 </ul>
             </section>
         </section>
 
         <section data-state="type">
             <section>
+                <aside class="speech">
+                    Najbardziej ogólnie podzielić typy można podzielić na dwa główne typy: proste i złożone. <br>
+                    Zacznijmy od typów prostych:
+                </aside>
                 <h2>proste</h2>
                 <ul>
-                    <li class="fragment type-with-value">string</li>
-                    <li class="fragment type-with-value">number</li>
-                    <li class="fragment type-with-value">boolean</li>
-                    <li class="fragment type-with-value type-es6">Symbol</li>
+                    <li class="fragment type-with-value">
+                        string
+                        <aside class="speech"><i>string</i> - czyli zwykły napis, ciąg znaków</aside>
+                    </li>
+                    <li class="fragment type-with-value">
+                        number
+                        <aside class="speech"><i>number</i> - czyli liczba, w JS nie ma rozróżnienia na float, int itp.</aside>
+                    </li>
+                    <li class="fragment type-with-value">
+                        boolean
+                        <aside class="speech"><i>boolean</i> - czyli wartości true/false</aside>
+                    </li>
+                    <li class="fragment type-with-value type-es6">
+                        Symbol
+                        <aside class="speech"><i>Symbol</i> - jest to nowy typ w ES6, parę słów więcej o tym typie za chwilę</aside>
+                    </li>
 
-                    <li class="fragment type-without-value">undefined</li>
-                    <li class="fragment type-without-value">null</li>
+                    <li class="fragment type-without-value">
+                        undefined
+                        <aside class="speech"><i>undefined</i> - jest typ-wartość w jednym, jest to domyślna wartość każdego nowo zadeklarowanej zmiennej i domyślna wartość zwracana przez funkcje</aside>
+                    </li>
+                    <li class="fragment type-without-value">
+                        null
+                        <aside class="speech"><i>null</i> - typ-wartość do którego nie można przypisać wartości, null to null</aside>
+                    </li>
 
                 </ul>
             </section>
             <section>
                 <h2>Złożone</h2>
+                <aside class="speech">Natomiast do typów złożonych zaliczyć można:</aside>
                 <ul>
-                    <li class="fragment">Object</li>
+                    <li class="fragment">
+                        Object
+                        <aside class="speech">
+                            I tak naprawdę tylko <i>Object</i>, niektórzy mogą być zdziwieni bo przecież jak to mam jeszcze np. <i>function</i>,
+                            tak ale <i>function</i> to nie typ danych tylko funkcja to, że w JS można funkcję przypisać do zmiennej nie
+                            implikuje tego, że jest to typ danych.
+                        </aside>
+                    </li>
                 </ul>
             </section>
             <section>
+                <aside class="speech">
+                    Teraz pojawi się parę wywołań <i>typeof</i> które zwraca typ danego obiektu, zastanów się
+                    przez chwilę przy każdym, postaraj się odpowiedzieć na pytanie: "jaki wynik otrzymamy"
+                </aside>
                 <pre><code class="hljs">
                     > typeof [];
                     <span class="fragment element-log">'object'</span>
@@ -118,11 +161,40 @@
                 <h3 class="slide-es6"></h3>
                 <h3 >Symbols</h3>
 
+                <aside class="speech">
+                    <i>Symbol</i> jest nowym typem dodanym w ES6, jest to unikalny ciąg znaków który może zostać wykorzystany np. jako klucz do "prywatnej" zmiennej
+                </aside>
+
                 <pre><code class="hljs">
-                    <span class="fragment">> var mySymbol = Symbol();</span>
-                    <span class="fragment">> var yourSymbol = Symbol('some text');</span>
-                    <span class="fragment">> Symbol('some text') === Symbol('some text');</span>
-                    <span class="fragment">false</span>
+                    <span class="fragment"><!--
+                    -->> var mySymbol = Symbol();<!--
+                    --><aside class="speech">
+                            Aby stworzyć nowy symbol należy wykorzystać do tego celu <b>fabrykę</b> <i>Symbol</i>. <br>
+                            Wywołanie tej metody ze słowem kluczowym <b>new</b> spowoduje błąd.
+                        </aside><!--
+                --></span>
+                    <span class="fragment"><!--
+                    -->> var yourSymbol = Symbol('some text');<!--
+                    --><aside class="speech">
+                            Opcjonalnie możemy podać jeden parametr typu "string", jednak ma on zastosowanie jedynie w przypadku debugowania,
+                            służy łatwemu rozpoznaniu <i>Symbolu</i> i nie wpływa w żaden sposób na wartość zwracana przez metodę <i>Symbol</i>
+                        </aside><!--
+                    --></span>
+                    <span class="fragment"><!--
+                    -->> Symbol('some text') === Symbol('some text');<!--
+                    --><aside class="speech">
+                            Dla tego też dwa wywołania z tym samym argumentem…
+                        </aside><!--
+                    --></span>
+                    <span class="fragment"><!--
+                        -->false<!--
+                    --><aside class="speech">
+                            …<b>NIE</b> są sobie równe
+                            <br>
+                            <br>
+                            Więcej na temat <i>Symboli</i> znajdziesz w linkach na dole slajdu
+                        </aside><!--
+                    --></span>
                 </code></pre>
 
                 <a href="http://es6-features.org/#SymbolType" class="source"></a>
@@ -133,8 +205,11 @@
 
         <section data-state="errors">
             <h3 class="section-header">Błędy</h3>
-
             <section>
+                <aside class="speech">
+                    Możemy wyodrębnić 3 główne rodzaje błędów podczas pisania naszego kodu: (slajd)
+                </aside>
+
                 <ul>
                     <li class="fragment">semantyczne (składniowe)</li>
                     <li class="fragment">logiczne</li>
@@ -143,7 +218,11 @@
             </section>
             <section>
                 <h4>Semantyczne</h4>
-
+                <aside class="speech">
+                    <i>Semantyczne</i> czyli te które nas najmniej bolą, zostaną one wyłapane przez interpreter i albo już nasze narzędzie
+                    parsujące (webpack, typescript) może nam rzucić błąd. Ewentualnie dostaniemy komunikat w konsoli deweloperskiej, że z naszym
+                    skryptem jest coś nie tak.
+                </aside>
                 <pre><code class="hljs">
                     > functon add(number1, number2) {
                         return number1 + number2;
@@ -153,7 +232,11 @@
             </section>
             <section>
                 <h4>Logiczne</h4>
-
+                <aside class="speech">
+                    <p>Błędy <i>logiczne</i> należą do tych które najtrudniej wyłapać ponieważ kod działa prawidłowo i
+                        żadne narzędzie do analizy kodu nie wyłapie błędu w naszym rozumowaniu albo błędnym przełożeniu tego rozumowania na kod.</p>
+                    <p>Tak jak w poniższym przykładzie: nazwa metody sugeruje, że wykonuje ona dodawanie natomiast w jej ciele widzimy operacje odejmowania.</p>
+                </aside>
                 <pre><code class="hljs">
                     > function add(number1, number2) {
                         return number1 - number2;
@@ -164,6 +247,11 @@
             </section>
             <section>
                 <h4>Runtime</h4>
+
+                <aside class="speech">
+                    <p>Błędy w tzw. <i>runtime</i>-ie należą do tych przed którymi możemy zabezpieczyć się na zapas.</p>
+                    <p>Ponieważ nie są one wynikiem błędu w naszym kodzie a np. błąd po stronie serwera, zewnętrzną biblioteką lub API.</p>
+                </aside>
 
                 <pre><code class="hljs">
                     > function addToServerNumber(number1) {
@@ -179,23 +267,54 @@
             <h3 class="slide-es6" style="margin: 50px 0 0 0;"></h3>
 
             <section>
+                <aside class="speech">
+                    <p>W ES6 istnieje nowy typ <i>napisów</i>…</p>
+                </aside>
                 <pre><code>
-                    <span class="fragment">> var oneLine = `I am in one line`;</span>
-                    <span class="fragment">> var multiLines = `I
+                    <span class="fragment"><!--
+                    -->> var oneLine = `I am in one line`;<!--
+                    --><aside class="speech">
+                            <p>…które mogą być tak jak do tej pory w jednej linii…</p>
+                        </aside><!--
+                --></span>
+                    <span class="fragment"><!--
+                    -->> var multiLines = `I
                     am
                     multi
-                    lines`;</span>
+                    lines`;<!--
+                    --><aside class="speech">
+                            <p>…ale także w wielu liniach bez używania "+".</p>
+                        </aside><!--
+                    --></span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>A co jeżeli w naszym ciągu znaków chcielibyśmy użyć zmiennej?</p>
+                    <p>Sprawdźmy to:</p>
+                </aside>
                 <pre><code>
-                    <span class="fragment">var name = 'Shaggy';</span>
-                    <span class="fragment">var oldStringWithVariable = 'My name is ' + name;</span>
-                    <span class="fragment">var newStringWithVariable = `My name is ${name}`;</span>
+                    <span class="fragment"><!--
+                        -->var name = 'Shaggy';<!--
+                    --><aside class="speech"><p>Załóżmy, że mamy zmienną <i>name</i></p></aside><!--
+                --></span>
+                    <span class="fragment"><!--
+                    -->var oldStringWithVariable = 'My name is ' + name;<!--
+                    --><aside class="speech"><p>Standardowo połączyli byśmy napis ze zmienną za pomocą + tak jak w przykładzie</p></aside><!--
+                --></span>
+                    <span class="fragment"><!--
+                    -->var newStringWithVariable = `My name is ${name}`;<!--
+                    --><aside class="speech">
+                            <p>W nowych szablonach mamy jednak możliwość wstawienia zmiennej bezpośrednio w ciąg znaków.</p>
+                            <p>Wstawiamy nazwę zmiennej między <b>${</b> i <b>}</b>, dzięki takiemu zapisowi interpreter
+                                będzie wiedział, że to co jest pomiędzy tymi znacznikami po potraktować jak normalny kod JS a nie zwykły napis.</p>
+                        </aside><!--
+                --></span>
                 </code></pre>
             </section>
             <section>
                 <a href="https://css-tricks.com/template-literals/">https://css-tricks.com/template-literals/</a>
+                <aside class="speech"><p>Nowe szablony potrafią więcej niż tylko wstawianie zmiennych w swoją treść, na slajdzie znajduje się link do bardziej szczegółowego opisu.</p></aside>
             </section>
         </section>
 
@@ -206,8 +325,18 @@
                 <h3>Spread</h3>
                 <h4 class="slide-es6"></h4>
                 <pre><code class="hljs">
-                    <span class="fragment">> var values = [4, 5, 6, 7, 8, 9];</span>
-                    <span class="fragment">> var digits = [1, 2, 3, <span class="fragment">...values</span>];</span>
+                    <span class="fragment"><!--
+                        -->> var values = [4, 5, 6, 7, 8, 9];<!--
+                    --><aside class="speech"><p>Załóżmy, że mamy tablicę i chcemy dodać na jej początek brakujące wartości od 1 do 3.</p></aside><!--
+                --></span>
+                    <span class="fragment"><!--
+                    --><aside class="speech"><p>Tworzymy więc dodatkową zmienną w której dodajemy brakujące wartości na początek.</p></aside><!--
+                    -->> var digits = [1, 2, 3, <!--
+                    --><span class="fragment"><!--
+                        --><aside class="speech"><p>Używając <i>spread operator</i>(<b>...</b>) rozdzielamy poszczególne elementy tablicy na pojedyńcze elementy</p></aside><!--
+                        -->...values<!--
+                    --></span>];<!--
+                --></span>
                     <span class="fragment">> digits;</span>
                     <span class="fragment">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
                 </code></pre>
@@ -215,12 +344,25 @@
             <section>
                 <h3>Rest</h3>
                 <h4 class="slide-es6"></h4>
+
                 <pre><code class="hljs" style="display: flex; flex-direction: column">
                     <span style="order: 2;" class="fragment"><!--
+                    --><aside class="speech"><p>Załóżmy, że chcemy stworzyć funkcje która będzie przyjmowała dowolną ilość argumentów.</p></aside><!--
 -->                > joinChars('M', 'y', ' ', 'n', 'a', 'm', 'e');<!--
                     --></span>
-                    <span style="order: 1;" class="fragment">
-                > function joinChars(<span class="fragment">...chars</span>) {
+                    <span style="order: 1;" class="fragment"><!--
+                        --><aside class="speech"><p>Stwórzmy więc taką metodę, problematyczne jednak jest ile argumentów nadać?</p></aside>
+                > function joinChars(<span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Użyjemy więc do tego celu <i>rest operator</i></p>
+                            <p>Pewnie zauważyłeś, że <i>rest</i> i <i>spread</i> operator wyglądają tak samo (<b>...</b>).
+                                JS w zależności od miejsca wykorzystania sam wie jak go interpretować</p>
+                            <p><i>Rest</i> różni się od <i>spread</i> tym, że zbiera wszystkie argumenty od miejsca
+                                deklaracji do końca listy argumentów, wkłada je do tablicy i przypisuje do zmiennej o podanej
+                                nazwie (w naszym przykładzie zmienna to: <i>chars</i>).</p>
+                        </aside><!--
+                        -->...chars<!--
+                    --></span>) {
                     return chars.join('')
                 }<!--
                     --></span><!--
@@ -232,17 +374,29 @@
         </section>
 
         <section data-state="constLet">
-            <section data-state="varLetConst"></section>
+            <section data-state="varLetConst">
+                <aside class="speech">
+                    <p>Zapewne wiesz jak deklarować zmienną przy użyciu <u>var</u> ale czy znasz różnice między <u>var</u> a nowymi <u>let</u> i <u>const</u>?</p>
+                    <p>W tej sekcji przyjżymy się tym mechanikom i wyjaśnimy sobie różnice między nimi</p>
+                </aside>
+            </section>
             <section data-state="var">
+                <aside class="speech">
+                    <p>Zacznijmy od tego czy wiesz co się stanie jeżeli spróbujemy użyć zmiennej której nigdzie nie zadeklarowaliśmy?</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         console.log(message);
                     }
                     > log()
-                    <span class="fragment element-log">'message is not defined'</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech"><p>Dostaniemy komunikat błędu mówiący o tym, że zmienna o takiej nazwie nie została zdefiniowana.</p></aside><!--
+                    -->'message is not defined'
+                    </span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech"><p>Czy wiesz jakie będą skutki wyświetlenia zmiennej przed jej deklaracją za pomocą <u>var</u>, po niej i po przypisaniu wartości?</p></aside>
                 <pre><code class="hljs">
                     > function log() {
                         console.log('1:', message);
@@ -259,6 +413,9 @@
             </section>
 
             <section>
+                <aside class="speech">
+                    <p>A czy wiesz co się stanie jeżeli spróbujemy przypisać wartość do zmiennej przed jej deklaracją skoro domyślna wartość zmiennej podczas deklaracji to <i>undefined</i>?</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         message = 'I am the chosen one'
@@ -270,6 +427,9 @@
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Ok, a jeżeli wstawimy deklaracje zmiennej w instrukcję <u>if</u> która będzie spełniona a użyjemy jej poza tą instrukcją?</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         if(true) {
@@ -282,6 +442,9 @@
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>A co się zmienni jeżeli warunek nie będzie spełniony?</p>
+                </aside>
                 <pre><code class="hljs">
                     > function log() {
                         if(false) {
@@ -294,16 +457,30 @@
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Jeżeli niektóre z tych rezultatów wprawiło Cie w zakłopotanie to wiec, że za wszystko odpowiedzialny jest <b>HOISTING</b></p>
+                </aside>
                 <h1>HOISTING</h1>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Jeżeli po dowiedzeniu się, że <i>hoisting</i> jest odpowiedzialny za całe zamieszanie masz podobną minę spieszę z wyjaśnieniami.</p>
+                </aside>
                 <img src="assets/hoisting.jpeg" alt="hoisting" style="width: 100%;">
             </section>
             <section data-state="var">
+                <aside class="speech">
+                    <p><b>Hoisting</b> to nic innego jak przeniesienie deklaracji zmiennej na początek funkcji.</p>
+                    <p>To dlatego, że <u>var</u> ma funkcyjny zakres widoczności, czyli nie ważne w którym miejscu
+                        funkcji zadeklarujemy zmienna bo i tak będzie ona przeniesiona na początek.</p>
+                </aside>
                 <img src="assets/hoisting-wyjasnienie.png" alt="hoisting" style="width: 70%;">
             </section>
             <section>
                 <pre><code class="hljs">
+                    <aside class="speech">
+                        <p>Jedne z powyższych przykładów zostanie więc zinterpretowany w taki sposób jak na slajdzie.</p>
+                    </aside>
                     > function log() {
                         var message;
 
@@ -315,8 +492,6 @@
                     > log();
                     <span class="fragment element-log">undefined</span>
                 </code></pre>
-
-                <aside class="notes">wygląd poprzedniej funkcji po wykonaniu hoistingu</aside>
             </section>
 
             <section data-state="let">

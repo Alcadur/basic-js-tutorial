@@ -65,6 +65,7 @@ var SpeechNotes = (function() {
 
         if( fragmentElement ) {
             fragmentSpeech = fragmentElement.querySelector( 'aside.speech' );
+            speechElement = undefined;
             if( fragmentSpeech ) {
                 speechElement = fragmentSpeech;
             }

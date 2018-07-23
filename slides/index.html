@@ -88,7 +88,7 @@
         <section data-state="type">
             <section>
                 <aside class="speech">
-                    Najbardziej ogólnie podzielić typy można podzielić na dwa główne typy: proste i złożone. <br>
+                    Najbardziej ogólnie można wyróżnić dwa główne typy: proste i złożone. <br>
                     Zacznijmy od typów prostych:
                 </aside>
                 <h2>proste</h2>
@@ -183,7 +183,7 @@
                     <span class="fragment"><!--
                     -->> Symbol('some text') === Symbol('some text');<!--
                     --><aside class="speech">
-                            Dla tego też dwa wywołania z tym samym argumentem…
+                            Dlatego też dwa wywołania z tym samym argumentem…
                         </aside><!--
                     --></span>
                     <span class="fragment"><!--
@@ -219,7 +219,7 @@
             <section>
                 <h4>Semantyczne</h4>
                 <aside class="speech">
-                    <i>Semantyczne</i> czyli te które nas najmniej bolą, zostaną one wyłapane przez interpreter i albo już nasze narzędzie
+                    <i>Semantyczne</i> czyli te które nas najmniej bolą, zostaną one wyłapane przez interpreter albo już nasze narzędzie
                     parsujące (webpack, typescript) może nam rzucić błąd. Ewentualnie dostaniemy komunikat w konsoli deweloperskiej, że z naszym
                     skryptem jest coś nie tak.
                 </aside>
@@ -300,14 +300,14 @@
                 --></span>
                     <span class="fragment"><!--
                     -->var oldStringWithVariable = 'My name is ' + name;<!--
-                    --><aside class="speech"><p>Standardowo połączyli byśmy napis ze zmienną za pomocą + tak jak w przykładzie</p></aside><!--
+                    --><aside class="speech"><p>Standardowo połączylibyśmy napis ze zmienną za pomocą + tak jak w przykładzie</p></aside><!--
                 --></span>
                     <span class="fragment"><!--
                     -->var newStringWithVariable = `My name is ${name}`;<!--
                     --><aside class="speech">
                             <p>W nowych szablonach mamy jednak możliwość wstawienia zmiennej bezpośrednio w ciąg znaków.</p>
                             <p>Wstawiamy nazwę zmiennej między <b>${</b> i <b>}</b>, dzięki takiemu zapisowi interpreter
-                                będzie wiedział, że to co jest pomiędzy tymi znacznikami po potraktować jak normalny kod JS a nie zwykły napis.</p>
+                                będzie wiedział, że to co jest pomiędzy tymi znacznikami ma potraktować jak normalny kod JS a nie zwykły napis.</p>
                         </aside><!--
                 --></span>
                 </code></pre>
@@ -320,7 +320,6 @@
 
         <section data-state="spread">
 
-            <section></section>
             <section>
                 <h3>Spread</h3>
                 <h4 class="slide-es6"></h4>
@@ -490,7 +489,7 @@
                         console.log(message);
                     }
                     > log();
-                    <span class="fragment element-log">undefined</span>
+                    <span class="element-log">undefined</span>
                 </code></pre>
             </section>
 
@@ -657,7 +656,7 @@
             </section>
             <section>
                 <aside class="speech">
-                    <p>To super, możemy teraz tworzyć sobie tablice bez obawy, że ich zawartość zostanie zmieniona czy nadpisana</p>
+                    <p>To super, możemy teraz tworzyć tablice bez obawy, że ich zawartość zostanie zmieniona czy nadpisana</p>
                 </aside>
                 <pre><code class="hljs">
                     > const immutableArray = [1, 2, 3, 400];
@@ -693,8 +692,8 @@
                         wywołania a nie deklaracji.</p>
                     <p>Jeżeli funkcja nie jest przypisana do obiektu i nie jest używana jako konstruktor (więcej na temat
                         konstruktorów w części z obiektami) kontekstem jej wywołania jest <u>window</u>.</p>
-                    <p>Przykładzie staramy sie pobrać właściwość <i>sum</i> z obiektu <u>window</u>, zwiększyć ją
-                        podaną wartość i zwrócić jako wynik.</p>
+                    <p>W przykładzie staramy sie pobrać właściwość <i>sum</i> z obiektu <u>window</u>, zwiększyć ją
+                        podaną o daną wartość i zwrócić jako wynik.</p>
                 </aside>
                 <pre><code class="hljs">
                 > function increaseSumBy(value) {
@@ -705,7 +704,8 @@
                 <span class="fragment element-log"><!--
                     --><aside class="speech">
                         <p>Ponieważ w obiekcie <u>window</u> nie znajduje się właściwość <i>sum</i> zwracany jest
-                        undefined.</p>
+                            <i>undefined</i> a dowolna liczba + <i>undefined</i> nie jest poprawną liczbą więc jako wynik
+                        otrzymujemy <i>NaN</i></p>
                     </aside><!--
                     -->NaN<!--
                 --></span>
@@ -713,7 +713,7 @@
             </section>
             <section>
                 <aside class="speech">
-                    <p>Aby poprawić przypiszmy naszą funkcję do stworzonego obiektu.</p>
+                    <p>Aby to poprawić przypiszmy naszą funkcję do stworzonego obiektu.</p>
                     <p>Aby przypisać funkcję do obiektu/zmiennej należy podać jej nazwę bez nawiasów.</p>
                     <p>Jak wcześniej było mówione kontekstem funkcji (<u>this</u>) nie jest miejsce deklaracji
                     tylko miejsce wywołania. Więc w momencie kiedy przypiszemy funkcję <i>increaseSumBy</i> do
@@ -748,7 +748,7 @@
                           });
                 <span class="fragment element-log"><!--
                     --><aside class="speech">
-                        <p>Dla tego właśnie <i>console.log</i> wypisał przycisk do którego została przypięta funkcja.</p>
+                        <p>Dlatego właśnie <i>console.log</i> wypisał przycisk do którego została przypięta funkcja.</p>
                         <p>UWAGA!!! nie jest to <u>string</u> tylko htmlowy <i>node</i> (węzeł) więc posiada on również
                         własne metody i właściwości których możemy używać wedle potrzeb lub je modyfikować.</p>
                     </aside><!--
@@ -852,12 +852,19 @@
                 <a  class="source" href="https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Operatory/this#Simple_call"></a>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Aby odpalić ćwiczenia przejdź w konsoli do katalogu <i>exercises</i> i wykonaj polecenie <i>node this.js</i></p>
+                </aside>
                 <img src="assets/lets-code.png" alt="let's code" class="lets-code">
             </section>
         </section>
 
         <section data-state="functionType">
             <section>
+                <aside class="speech">
+                    <p>Nie raz pewnie deklarowałeś/deklarowałaś funkcję, więc zapewne rezultat następnego kroku
+                        będzie dla ciebie oczywisty</p>
+                </aside>
                 <pre><code class="hljs">
                     > function add(a, b) {
                         return a + b;
@@ -867,46 +874,114 @@
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>A czy wiesz jaki wynik zwróci ta funkcja?</p>
+                </aside>
                 <pre><code class="hljs">
                     > function add(a, b) {
                         a + b;
                     }
                     <span class="fragment">> add(2, 2);</span>
-                    <span class="fragment element-log">undefined</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>Jeżeli metoda nie ma jawnie zadeklarowanej sekcji <u>return</u> zwraca ona <i>undefined</i>.</p>
+                            <p>Czyli każda metoda która nie zwraca <i>nic</i>, tak naprawdę będzie zwracać <i>undefined</i>.</p>
+                        </aside><!--
+                        -->undefined<!--
+                    --></span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Rozważmy teraz pare wariacji metody którą widzieliśmy przed chwilą:</p>
+                </aside>
                 <pre><code class="hljs">
                     /**
-                    <span class="fragment">* add(1, 2) > 3</span>
-                    <span class="fragment">* add(1, 2, 3) > 6</span>
-                    <span class="fragment">* add(1, 1, 1, 10, -4, 2, 5) > 16</span>
-                    <span class="fragment">* add(n1, n2, n3, ... )</span>
+                    <span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Taką wersje zaimplementowaliśmy na samym początku.</p>
+                        </aside><!--
+                        -->* add(1, 2) > 3<!--
+                    --></span>
+                    <span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Jeżeli byśmy chcieli dodać jeszcze jedna opcjonalną liczbę to też nie było by zapewne
+                            dramatu, jakiś <u>if</u> i sprawa by się rozwiązała</p>
+                        </aside><!--
+                        -->* add(1, 2, 3) > 6<!--
+                    --></span>
+                    <span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Jeżeli zapragniemy dodać jeszcze 'kilka' opcjonalnych parametrów to zrobi się z tego całkiem pokaźna
+                            <u>if</u>ologia</p>
+                        </aside><!--
+                        -->* add(1, 1, 1, 10, -4, 2, 5) > 16<!--
+                    --></span>
+                    <span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>A jak przewidzieć ilość <u>if</u>ów jeżeli będziemy chcieli mieć funkcje dla dowolnej liczy argumentów</p>
+                        </aside><!--
+                        -->* add(n1, n2, n3, ... )<!--
+                    --></span>
                     */<!--
-                    --><span class="fragment">
+                    --><span class="fragment"><!--
+                    --><aside class="speech">
+                        <p>Ile argumentów przewidzieć? jak to zaimplementować żeby nie pogubić się w <u>if</u>ach?</p>
+                    </aside>
                     function add(/* ??? */) {
                         return // ???
                     }</span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Na sam początek musimy do czegoś dodawać nasze kolejne liczby więc zadeklarujmy <i>sum</i>.</p>
+                    <p>Patrząc na drugą zmienną można odnieść wrażenie, że będziemy po czymś iterować. Jest to prawda, mogłeś
+                    też pomyśleć, że wykorzystamy do tego <i>rest operator</i>. Nie było by to złe rozwiązanie ale powiedzmy,
+                    że nie możesz używać funkcjonalności z ES6 bo działasz na kodzie który pamięta jeszcze dinozaury</p>
+                </aside>
                 <pre><code class="hljs">
                     > function add() {
                         var sum = 0;
                         var argIndex;
-                        <span class="fragment" style="position: absolute; top: 146px; left: 494px;">arguments</span>
-                        <span class="fragment">
-                        for (argIndex in <span style="visibility: hidden;">arguments</span>) {
+                        <span class="fragment" style="position: absolute; top: 120px; left: 494px;"><!--
+                            --><aside class="speech">
+                                <p>Istnieje coś takiego jak <u>arguments</u>, jest to obiekt dostępny w funkcjach i przechowuje
+                                wszystkie argumenty przekazane do funkcji.</p>
+                            </aside><!--
+                            -->arguments<!--
+                        --></span>
+                        <span class="fragment"><!--
+                            --><aside class="speech">
+                                <p>Jeżeli wiemy już jak przechwycić wszystkie argumenty wystarczy teraz, że prziterujemy
+                                po wszystkich elementach <u>arguments</u> i dodamy poszczególne wartości do <i>sum</i></p>
+                            </aside><!--
+                        -->for (argIndex in <span style="visibility: hidden;">arguments</span>) {
                             sum += arguments[argIndex];
-                        }
-                        </span>
-                        <span class="fragment">return sum;</span>
+                        }<!--
+                        --></span>
+                        <span class="fragment"><!--
+                            --><aside class="speech">
+                                <p>Na koniec zwracamy wynik sumowania</p>
+                            </aside><!--
+                            -->return sum;<!--
+                        --></span>
                     }
-                    <span class="fragment">> add(1, 1, 1, 10, -4, 2, 5);</span>
+                    <span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Takie wywołanie metody powinno dać prawidłowy wynik czyli…</p>
+                        </aside><!--
+                        -->> add(1, 1, 1, 10, -4, 2, 5);<!--
+                    --></span>
                     <span class="fragment element-log">16</span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Należy jednak pamiętać, że <u>arguments</u> <b>NIE JEST</b> tablicą, jest obiektem tablico-podobnym
+                    który z tablicą łączy tylko właściwość <i>length</i>.</p>
+                    <p>Więcej do poczytania na: <a href="https://developer.mozilla.org/pl/docs/Web/JavaScript/Referencje/Funkcje/arguments" target="_blank">MDN web docs</a></p>
+                </aside>
                 <div style="width: 350px; display: inline-block;">
                     <img src="assets/warning.jpg" alt="warning" style="width: 100%;">
                 </div>
@@ -915,16 +990,68 @@
                 </div>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Znacznie częściej niż samotne funkcje tworzymy je w obrębie obiektów, przyjrzyjmy się więc sposobom
+                    w jakie możemy to zrobić.</p>
+                </aside>
                 <pre><code class="hljs">
                     > var myObj = {
-                        <span class="fragment">fun1: function() {},</span>
-                        <span class="fragment type-es6">fun2: () => {},</span>
-                        <span class="fragment type-es6">fun3() {}</span>
+                        <span class="fragment"><!--
+                            --><aside class="speech">
+                                <p>W klasyczny, najlepiej nam znany sposób czyli przypisujemy anonimową funkcję
+                                do właściwości obiektu.</p>
+                            </aside><!--
+                            -->fun1: function() {},<!--
+                        --></span>
+                        <span class="fragment type-es6"><!--
+                            --><aside class="speech">
+                                <p>ES6 umożliwia nam też zadeklarowanie tzw. <i>arrow function</i> o której trochę więcej za chwilę.</p>
+                            </aside><!--
+                            -->fun2: () => {},<!--
+                        --></span>
+                        <span class="fragment type-es6"><!--
+                            --><aside class="speech">
+                                <p>Skrócona wersja normalnej deklaracji która na 99% zachowuje się tak samo (o tym 1% za chwilę).</p>
+                            </aside><!--
+                            -->fun3() {}<!--
+                        --></span>
                     };
                 </code></pre>
             </section>
             <section>
                 <h3 class="slide-es6"></h3>
+                <aside class="speech">
+                    <p><i>Arrow function</i> różni się tym od zwykłej metody, że nie ma własnego kontekstu wywołania,
+                    dziedziczy go jednak od rodzica.</p>
+                    <p>Istnieje możliwość deklaracji w jendnej linii
+                    <pre><code>
+        var af = () => 123;
+                    </code></pre>
+                    która działa tak samo jak:
+                    <pre><code>
+        var nf = function() {
+            return 123;
+        }
+                    </code></pre>
+                    </p>
+                    <p>Jeżeli chcemy zapisać więcej niż jedna linijkę możemy to zrobić dodając <b>{</b> <b>}</b>
+                    za <b>=></b>
+                    <pre><code>
+        var af = () => {
+            return 123;
+        }
+                    </code></pre>
+                    </p>
+                    <p>Istnieje też możliwość zwrócenia obiektu za pomocą jednolinijkowej <i>arrow function</i>, wystarczy zapisać go
+                    jako wyrażenie (czyli pomiędzy <b>(</b> i <b>)</b> )
+                    <pre><code>
+        var af = () => ({ type: 'arrow function' });
+                </code></pre>
+                    </p>
+                    <p>Należy też pamiętać, że wywołując <u>arguments</u> w <i>arrow function</i> nie dostaniemy listy argumentów
+                    z funkcji strzałkowej tylko (o ile taka istnieje) z funkcji w której <i>arrow function</i> została wywołana.</p>
+                    <p>Czy mając powyższą ściągawkę jesteś wstanie powiedzieć jaki będzie wynik operacji na slajdzie?</p>
+                </aside>
                 <pre><code class="hljs">
                     > var myObj = {
                         fun1: () => this,
@@ -934,15 +1061,54 @@
                             }
                         }
                     };
-                    <span class="fragment">> myObj === myObj.fun1(); </span>
-                    <span class="fragment element-log">false</span>
-                    <span class="fragment">> myObj === myObj.fun2().fun21(); </span>
-                    <span class="fragment element-log">true</span>
+                    > myObj === myObj.fun1();
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p><i>Arrow function</i> nie ma swojego kontekstu więc jeżeli zadeklarujemy taką metode w globalnie
+                                dostępnym obiekcie.</p>
+                            <p>W momencie odwołana się do <u>this</u> pobierany jest <i>window</i>.</p>
+                        </aside><!--
+                        -->false<!--
+                    --></span>
+                    > myObj === myObj.fun2().fun21();
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p><i>fun2</i> jest normalną funkcją więc jej kontekstem jest <i>myObj</i> a jej rezultatem
+                            jest obiekt zawierający metodę <i>fun21</i>.</p>
+                            <p>Jeżeli <i>fun21</i> była by normalną funkcją to jej kontekstem był by obiekt:
+                            <pre><code>
+            {
+                fun21: f() { /*...*/ }
+            }
+                            </code></pre></p>
+                            <p>Ponieważ jednak <i>fun21</i> jest <i>arrow function</i> jej kontekstem wywołainem jest kontest
+                            w którym została wywołana metoda <i>fun2</i>.</p>
+                        </aside><!--
+                        -->true<!--
+                    --></span>
                 </code></pre>
             </section>
             <section>
                 <h3 class="slide-es6"></h3>
+                <aside class="speech">
+                    <p>Pamiętacie jak mówiłem, że te dwa sposoby deklaracji są prawie taki sam.</p>
+                    <p>Jedyna różnica między nimi jest taka, że pierwszą możemy wykorzystać jako konstruktor natomiast drugą
+                    już nie bardzo.</p>
+                    <p>Po wykonaniu:
+                    <pre><code>
+            var instance = new myObj.fun1();
+                    </code></pre>
+                    dostaniemy nową instancję <i>myObj.fun1</i>
+                    </p>
 
+                    <p>Natomiast jeżeli spróbujemy tego samego z <i>fun2</i>:
+                    <pre><code>
+            var instance = new myObj.fun2();
+                    </code></pre>
+                    dostaniemy komunika błędu <i>myObj.fun2 is not a constructor</i>
+                    </p>
+
+                </aside>
                 <pre><code class="hljs">
                     > var myObj = {
                         fun1: function() { /* ... */ },
@@ -951,35 +1117,95 @@
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Aby odpalić ćwiczenia przejdź w konsoli do katalogu <i>exercises</i> i wykonaj polecenie <i>node arrow.js</i></p>
+                </aside>
                 <img src="assets/lets-code.png" alt="let's code" class="lets-code">
             </section>
         </section>
 
         <section data-state="applyCall">
             <section data-state="applyCall">
-                <pre class="fragment"><code class="hljs">
+                <aside class="speech">
+                    <p>W działaniu metod <i>apply</i> i <i>call</i> różnią się tylko typem przyjmowania drugiego argumentu.</p>
+                </aside>
+                <pre class="fragment"><code class="hljs"><!--
+                    --><aside class="speech">
+                        <p>Zadeklarujmy sobie funkcję na której będziemy wywoływać nasze metody.</p>
+                    </aside>
                     > var sum = function(num1, num2, num3) {
                         this.accumulator = num1 + num2 + num3;
                     }
                 </code></pre>
             </section>
             <section data-state="apply">
-                <pre><code class="hljs">
-                    <span class="fragment" data-fragment-index="3">> var accumulatorObj = {};</span>
-                    <span class="fragment" data-fragment-index="1">> sum.apply(<span class="fragment" data-fragment-index="2">accumulatorObj</span>, <span class="fragment">[1, 2,3]</span>);</span>
-                    <span class="fragment">> accumulatorObj</span>
+                <aside class="speech">
+                    <p><i>apply</i> przyjmuje dwa argumenty i na ich podstawie wywołuje metodę na której zostało wywołane.</p>
+                </aside>
+                <pre><code class="hljs"><!--
+                    --><span class="fragment" data-fragment-index="3"><!--
+                        --><aside class="speech">
+                            <p>Zadeklarujmy więc nasz obiekt.</p>
+                        </aside>
+                    > var accumulatorObj = {};<!--
+                    --></span>
+                    <span>> sum.apply(<span class="fragment" data-fragment-index="2"><!--
+                        --><aside class="speech">
+                            <p>Pierwszym argumentem jest kontekst wywołania funkcji który nadpisuje domyślne zachowanie.</p>
+                        </aside><!--
+                        -->accumulatorObj<!--
+                    --></span>, <span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Jako drugi argument przyjmuje tablicę która zawiera poszczególne argumenty potrzebne do wywołania
+                            metody</p>
+                        </aside><!--
+                        -->[1, 2,3]<!--
+                    --></span>);</span>
+                    <span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Więc po wypisaniu obiektu który przekazaliśmy jako kontekst wywołania funkcji dostaniemy
+                            odpowiednio zmodyfikowany obiekt.</p>
+                        </aside><!--
+                        -->> accumulatorObj</span>
                     <span class="fragment element-log">{ accumulator: 6 }</span>
                 </code></pre>
             </section>
             <section data-state="call">
-                <pre><code class="hljs">
-                    <span class="fragment" data-fragment-index="3">> var accumulatorObj = {};</span>
-                    <span class="fragment" data-fragment-index="1">> sum.call(<span class="fragment" data-fragment-index="2">accumulatorObj</span>, <span class="fragment">1</span>, <span class="fragment">2</span>, <span class="fragment">3</span>);</span>
-                    <span class="fragment">> accumulatorObj</span>
+                <aside class="speech">
+                    <p><i>Call</i> robi dokładnie to samo co <i>apply</i> różnią się one jedynie sposobem wywołania.</p>
+                </aside>
+                <pre><code class="hljs"><!--
+                    --><span class="fragment" data-fragment-index="3"><!--
+                        --><aside class="speech">
+                            <p>Ponownie zadeklarujmy obiekt który jest przekazany jako
+                            kontekst wywołania.</p>
+                        </aside>
+                    > var accumulatorObj = {};<!--
+                    --></span>
+                    > sum.call(<span class="fragment" data-fragment-index="2"><!--
+                    --><aside class="speech">
+                        <p>Czyli jako pierwszy argument przekazujemy kontekst wywołania funkcji.</p>
+                    </aside><!--
+                    -->accumulatorObj<!--
+                    --></span>, <span class="fragment"><!--
+                    --><aside class="speech">
+                        <p>Jako kolejne argument oddzielone <b>,</b> (przecinkiem) podajemy argumenty które mają trafić do funkcji</p>
+                    </aside><!--
+                    -->1, 2, 3<!--
+                    --></span>);
+                    <span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Więc po wypisaniu obiektu który przekazaliśmy jako kontekst wywołania funkcji dostaniemy
+                            odpowiednio zmodyfikowany obiekt.</p>
+                        </aside><!--
+                        -->> accumulatorObj</span>
                     <span class="fragment element-log">{ accumulator: 6 }</span>
                 </code></pre>
             </section>
             <section data-state="applyCall">
+                <aside class="speech">
+                    <p>Tak wygląda definicja obu metod w dokumentacji.</p>
+                </aside>
                 <pre><code class="hljs">
                     fun.apply(thisArg, [argsArray])
                 </code></pre>
@@ -992,9 +1218,19 @@
 
         <section data-state="binding">
             <section>
+                <aside class="speech">
+                    <p><i>bind</i> jest bardzo pomocną metodą. Można powiedzieć, że kopiuje funkcje która ją wywołała z
+                        pewnymi zmianami…</p>
+                </aside>
             </section>
 
             <section>
+                <aside class="speech">
+                    <p>Załóżmy, że mamy obiekt który przechowuje nam jakieś funkcje i chcemy wykorzystać je jako event litenery.
+                        Możemy przekazać je w taki sposób (patrz slajd)</p>
+                    <p>Jest jednak pewien problem, jeżeli korzystamy w takiej metodzie z <u>this</u>, zostanie on podmieniony na
+                        przycisk do którego została przypięta funkcja.</p>
+                </aside>
                 <pre><code class="hljs">
             > var obj = {
                 items: ['item'],
@@ -1003,10 +1239,22 @@
                 }
             }
             > .addEventListener('click', obj.logItems);
-            <span class="fragment element-log">undefined</span>
+            <span class="fragment element-log"><!--
+                --><aside class="speech">
+                    <p>Z tego też powodu właściwość <i>items</i> jest <u>undefined</u>, gdyż przez przypisanie zmieniliśmy
+                    kontekst wywołania funkcji i <u>this</u> nie odwołuje się już do <i>obj</i> tylko do przycisku
+                    który został kliknięty.</p>
+                </aside><!--
+                -->undefined</span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Aby zapobiect takiemu niepożądanemu działaniu możemy użyć <u>bind</u>, który jako pierwszy argument
+                    tak samo jak <i>call</i> i <i>apply</i> przyjmuje kontekst wywołania.</p>
+                    <p>Czyli taki zapis jak na slajdzie spowoduje zmianę kontekstu wywołania z <i>przycisku</i> na
+                        <i>obj</i>.</p>
+                </aside>
                 <pre><code class="hljs">
         > var obj = {
             items: ['item'],
@@ -1015,70 +1263,192 @@
             }
         }
         > .addEventListener('click', obj.logItems.bind(obj));
-        <span class="fragment element-log">['item']</span>
+        <span class="fragment element-log"><!--
+            --><aside class="speech">
+                <p>Jak widać tym razem w konsoli dostaliśmy to czego się spodziewaliśmy.</p>
+            </aside><!--
+            -->['item']<!--
+        --></span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Jak widać w dokumentacji <i>bin</i> może przyjąć inne opcjonalne argumenty które reprezentują kolejne
+                        argumenty w metodzie.</p>
+                </aside>
+
                 <pre><code class="hljs">
                 .bind(thisArg[,  arg1[, arg2[, ...]]])
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Przy takim zapisie <i>bind</i> tworzy kopię funkcji z zapamiętanymi pierwszymi parametrami.</p>
+                    <p>Ponieważ <i>bind</i> zwraca funkcję aby uzupełnić brakujący argument musimy wywołać
+                    zwróconą metodę z parametrem.</p>
+                </aside>
                 <pre><code class="hljs">
         > function multiParams(param1, param2, param3) {
             console.log(param1, param2, param3);
         };
         > var boundMultiParams = multiParams.bind(null, 'p1', 'p2');
         > boundMultiParams('one');
-        <span class="fragment element-log">'p1' 'p2' 'one'</span>
+        <span class="fragment element-log"><!--
+            --><aside class="speech">
+                <p>Jak widać mimo, że wywołaliśmy metodę tylko z jednym parametrem mamy dostęp do wszystkich 3
+                które zadeklarowaliśmy w oryginalnej metodzie.</p>
+                <p>
+                    <i>param1</i> - 'p1'<br>
+                    <i>param2</i> - 'p2'<br>
+                    <i>param3</i> - 'one'
+                </p>
+            </aside><!--
+            -->'p1' 'p2' 'one'<!--
+        --></span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Teraz aby dobrze zrozumieć jak działa <i>bind</i> spróbujemy zaimplementować go sami.</p>
+                </aside>
                 <pre><code class="hljs">
-        > var customBind = function (<span class="fragment" data-fragment-index="1">method</span>, <span class="fragment" data-fragment-index="2">context</span>, <span class="fragment" data-fragment-index="3">...bindArgs</span>) {
-            <span class="fragment" data-fragment-index="4">return function (<span class="extend-args">...nestedArgs</span>) {
-                <span class="fragment" data-add-slide-class-on-show="show-args" data-add-slide-class-on-hide="hide-args"  data-fragment-index="6">var args = bindArgs.concat(nestedArgs);</span>
-                <span class="fragment" data-state="test" data-fragment-index="5">return method.apply(context, <span class="args-bindArgs">bindArgs</span><span class="args-args">args</span>);</span>
+        > var customBind = function (<span class="fragment" data-fragment-index="1"><!--
+                    --><aside class="speech">
+                        <p>Pierwszym argumentem będzie metoda na której ma zostać wywołany nasz <i>bind</i></p>
+                    </aside><!--
+                    -->method<!--
+                --></span>, <span class="fragment" data-fragment-index="2"><!--
+                    --><aside class="speech">
+                        <p>Jako drugi argument będziemy przyjmować kontekst w którym ma zostać wywołana metoda.</p>
+                    </aside><!--
+                    -->context<!--
+                --></span>, <span class="fragment" data-fragment-index="3"><!--
+                    --><aside class="speech">
+                        <p>Wszystkie kolejne argumenty potraktujemy jako argumenty metody oryginalnje które
+                        mają być do niej przekazane i za pomocą <i>rest operator</i> zbierzemy je do jednej tablicy.</p>
+                    </aside><!--
+                    -->...bindArgs<!--
+                --></span>) {
+            <span class="fragment" data-fragment-index="4"><!--
+                --><aside class="speech">
+                    <p>Jak już powiedzieliśmy <i>bind</i> zwraca funkcję, zróbmy to samo.</p>
+                </aside><!--
+                -->return function (<span class="extend-args">...nestedArgs</span>) {
+                <span class="fragment" data-add-slide-class-on-show="show-args" data-add-slide-class-on-hide="hide-args"  data-fragment-index="6"><!--
+                    --><aside class="speech">
+                    <p>Zbierzmy więc wszystkie argumenty które użytkownik przekaże podczas wywoływania naszej metody.</p>
+                    <p>Musimy też połączyć je z parametrami które zostały przekazane do funkcji <i>customBind</i>,
+                    zrobimy to przez połączenie tablic za pomocą <i>concat</i>.</p>
+                    <p>Ostatnim krokiem jest zamiana drugiego argumentu w wywołaniu <i>apply</i> z <i>bindArgs</i> na nowo
+                    utworzona zmienną <i>args</i>.</p>
+                </aside><!--
+                    -->var args = bindArgs.concat(nestedArgs);</span>
+                <span class="fragment" data-state="test" data-fragment-index="5"><!--
+                    --><aside class="speech">
+                    <p>Aby wywołać oryginalną metodę ze zmienionym kontekstem wykorzystamy <i>apply</i>. Jako parametry oczywiście
+                    przekażemy kontekst wywołania i zebrane wcześniej za pomocą <i>rest operator</i> argumenty.</p>
+                    <p>Wiemy, że możemy też przekazywać parametry do funkcji która zostanie zwrócona przez <i>bind</i>, nam tej
+                    funkcjonalności jeszcze brakuję.</p>
+                </aside><!--
+                    -->return method.apply(context, <span class="args-bindArgs">bindArgs</span><span class="args-args">args</span>);</span>
             }</span>
         }
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Jak mówiłem wcześniej <i>bind</i> przydaje się do zmiany kontekstu wywołania metody.</p>
+                    <p>Mogą pojawić się jednak pewne problemy jeżeli nie będziemy wiedzieć jak działają pewne mechanizmy.
+                    Kiedy przypinamy metodę do wywołania na jakimś zdarzeniu to automatycznie do metody jest przekazywany
+                    obiekt tego zdarzenia tzw. <u>event</u>.</p>
+                    <p>Czy jesteś w stanie przewidzieć rezultat wywołania tego zdarzenia?</p>
+                </aside>
                 <pre><code class="hljs">
         > function clickHandler(event, constParam) {
             event.preventDefault();
             console.log('constParam is', constParam);
         }
         > .addEventListener('click', clickHandler.bind(null, 'CONST'));
-        <span class="fragment element-log">Uncaught TypeError: event.preventDefault is not a function</span>
+        <span class="fragment element-log"><!--
+            --><aside class="speech">
+            <p>Ponieważ <i>bind</i> łączy parametry od lewej do prawej tak prezentuje się nazwa zmiennej do jej zawartości<br>
+            <i>event</i> - 'CONST'<br>
+            <i>constParam</i> - '&lt;click event&gt;'</p>
+        </aside><!--
+            -->Uncaught TypeError: event.preventDefault is not a function</span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Skoro wiemy, że <i>bind</i> przypisuje naszą wartość nie do tej zmiennej, zastosujmy najprostsze rozwiązanie
+                    tego problemu. Zmieńmy kolejność parametrów, musimy pamiętać aby te parametry które mają być przekazane
+                    przez <i>bind</i> muszą znajdować się na początku listy argumentów.</p>
+                </aside>
                 <pre><code class="hljs">
         > function clickHandler(constParam, event) {
             event.preventDefault();
             console.log('constParam is', constParam);
         }
         > .addEventListener('click', clickHandler.bind(null, 'CONST'));
-        <span class="fragment element-log">'constParam is CONST'</span>
+        <span class="fragment element-log"><!--
+            --><aside class="speech">
+            <p>Jak widać po zmianie kolejności parametrów wszystko zostało podpięte pod właściwe miejsca.</p>
+            <p>'constParam' został przekazany przez <i>bind</i> jako pierwszy argument natomiast <i>event</i>
+            wstrzyknął swój obiekt jako drugi argument.</p>
+        </aside><!--
+            -->'constParam is CONST'</span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Aby odpalić ćwiczenia przejdź w konsoli do katalogu <i>exercises</i> i wykonaj polecenie <i>node bind.js</i></p>
+                </aside>
                 <img src="assets/lets-code.png" alt="let's code" class="lets-code">
             </section>
         </section>
 
         <section data-state="object">
             <section>
+                <aside class="speech">
+                    <p>Tworzenie obiektów jest jedną z podstawowych rzeczy w JS.</p>
+                    <p>Istnieje jednak więcej niż jeden sposób tworzenia obiektu.</p>
+                </aside>
             <pre><code class="hljs">
-                <span class="fragment">> var o1 = {};</span>
-                <span class="fragment">> var o2 = Object.create(sourceObj);</span>
-                <span class="fragment">> function MyConstructor() {}</span>
-                <span class="fragment">> var fo1 = new MyConstructor();</span>
-                <span class="fragment">> var fo2 = new function() {};</span>
+                <span class="fragment"><!--
+                    --><aside class="speech">
+                    <p>Najbardziej klasyczny dla JS, czyli obiekt <i>JSON</i>owy</p>
+                </aside><!--
+                    -->> var o1 = {};</span>
+                <span class="fragment"><!--
+                    --><aside class="speech">
+                        <p>Istnieje też możliwość stworzenia nowego obiektu na podstawie już istniejącego.</p>
+                    <p><i>Object.create</i> tworzy kopię obiektu ale co ważne <b>TYLKO</b> pierwszego poziomu.
+                    Jeżeli będziemy mieć obiekt który jako wartości będzie miał inne obiekty one nie będą kopiowane a
+                    przekazane przez referencje.</p>
+                    </aside><!--
+                    -->> var o2 = Object.create(sourceObj);</span>
+                <span class="fragment"><!--
+                    --><aside class="speech">
+                        <p>Za pomocą JS możemy pisać obiektowo, w dobrych praktykach jest abyfunkcje które mają za cel
+                            być konstruktorami by zaczynały się z wielkiej litery.</p>
+                    </aside><!--
+                    -->> function MyConstructor() {}</span>
+                <span class="fragment"><!--
+                    --><aside class="speech">
+                        <p>Aby stworzyć nową instancję należy poprzedzić wywołanie funkcji słowe kluczowym <u>new</u>.</p>
+                    </aside><!--
+                    -->> var fo1 = new MyConstructor();</span>
+                <span class="fragment"><!--
+                    --><aside class="speech">
+                        <p>Możemy też stworzyć instancję z anonimowej funkcji.</p>
+                    </aside><!--
+                    -->> var fo2 = new function() {};</span>
             </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Przygotujmy więc sobie obiekt na podstawie którego będziemy tworzyć</p>
+                </aside>
                 <pre><code class="hljs">
                 > var personDraft = {
                     age: 20,
@@ -1092,19 +1462,36 @@
                     }
                 };
                 > personDraft.introduceYourself();
-                <span class="fragment element-log">'Hello, my name is Unknown and I am 20 years old'</span>
+                <span class="fragment element-log"><!--
+                    --><aside class="speech">
+                        <p>Jeżeli wywołamy teraz <i>introduceYourself</i> dostaniemy wynik z domyślnymi danymi.</p>
+                    </aside><!--
+                    -->'Hello, my name is Unknown and I am 20 years old'</span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Możemy teraz stworzyć kopię obiektu źródłowego za pomocą <i>Object.create</i>
+                    i zmienimy parametry…</p>
+                </aside>
                 <pre><code class="hljs">
                 > var lucy = Object.create(personDraft);
                 > lucy.name = 'Lucy';
                 > lucy.age = 25;
                 > lucy.introduceYourself();
-                <span class="fragment element-log">'Hello, my name is Lucy and I am 25 years old'</span>
+                <span class="fragment element-log"><!--
+                    --><aside class="speech">
+                        <p>…dostaniemy odpowiednio zmodyfikowany komunikat.</p>
+                    </aside><!--
+                    -->'Hello, my name is Lucy and I am 25 years old'</span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Stwórzmy teraz konstruktor za pomocą funkcji. Tworzymy funkcję która przyjmuje dwa argumenty które
+                    będą wykorzystane w instancjach.</p>
+                    <p>Zwróć uwagę na to, że metodę przypisujemy bezpośrednio do obiektu w konstruktorze.</p>
+                </aside>
                 <pre><code class="hljs">
                 > var Person = function(name, age) {
                     this.name = name;
@@ -1113,19 +1500,36 @@
                 }
                 > var lucy = new Person('Lucy', 25);
                 > lucy.introduceYourself();
-                <span class="fragment element-log">'Hello, my name is Lucy and I am 25 years old'</span>
+                <span class="fragment element-log"><!--
+                    --><aside class="speech">
+                        <p>Wynik działania jest podobny do poprzednich.</p>
+                    </aside><!--
+                    -->'Hello, my name is Lucy and I am 25 years old'</span>
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Można też przypisać funkcje do <i>prototype</i> który jest czymś na wzór przestrzeni współdzielonej między
+                    wszystkie instancje danego obiektu.</p>
+                </aside>
                 <pre><code class="hljs">
     > Person.prototype.introduceYourself = function() { /* ... */ }
     > var susana = new Person('Susana', 31);
     > susana.introduceYourself();
-    <span class="fragment element-log">'Hello, my name is Susana and I am 31 years old'</span>
+    <span class="fragment element-log"><!--
+                    --><aside class="speech">
+                        <p>Efekt jest taki sam jak ostatnio więc jak wybrać ten najlepszy? A może wszystkie są tak samo dobre?</p>
+                    </aside><!--
+                    -->'Hello, my name is Susana and I am 31 years old'</span>
                 </code></pre>
             </section>
 
             <section>
+                <aside class="speech">
+                    <p>Jest różnica między sposobami tworzenia obiektów i możliwe, że w jednym projekcie będziemy wykorzystywać
+                        więcej niż jedne sposób w zależności od tego jaki efekt chcemy uzyskać.</p>
+                    <p>Wyjaśnijmy teraz 2 ostatnie sposoby tworzenia obiektów.</p>
+                </aside>
                 <table class="compare-table">
                     <tr>
                         <th>
@@ -1140,25 +1544,51 @@
                         </th>
                     </tr>
                     <tr>
-                        <td>
-                            <img class="fragment" src="assets/constructor.png" alt="constructor">
+                        <td class="fragment">
+                            <aside class="speech">
+                                <p>Jeżeli przypisujemy funkcje w konstruktorze to za każdym razem gdy tworzymy nową instancje
+                                obiektu tworzona jest na nowo taka sama funkcja.</p>
+                                <p>Może to mieć znaczenie wydajnościowe jeśli będziemy tworzyć większe ilości elementów.</p>
+                            </aside>
+                            <img src="assets/constructor.png" alt="constructor">
                         </td>
-                        <td>
-                            <img class="fragment" src="assets/prototype.png" alt="prototype">
+                        <td class="fragment">
+                            <aside class="speech">
+                                <p>Jeżeli jednak dodamy metodę do <i>prototype</i> jak wcześniej wspomniałem jest to przestrzeń
+                                współdzielona więc za każdym razem jak będziemy tworzyć kolejne instancje będą one korzystać
+                                z tej samej kopi funkcji.</p>
+                            </aside>
+                            <img src="assets/prototype.png" alt="prototype">
                         </td>
                     </tr>
                 </table>
 
             </section>
             <section>
+                <aside class="speech">
+                    <p>Aby odpalić ćwiczenia przejdź w konsoli do katalogu <i>exercises</i> i wykonaj polecenie <i>node object.js</i></p>
+                </aside>
                 <img src="assets/lets-code.png" alt="let's code" class="lets-code">
             </section>
         </section>
 
         <section data-state="reference">
-            <section></section>
+            <section>
+                <aside class="speech">
+                    <p>Zacznijmy od tego co to jest <i>referencja</i>? Jest to informacja o miejscu w pamięci w którym znajdują
+                        się interesujące nas informacje.</p>
+                    <p>Czyli jeżeli przekazujemy obiekt czy funkcje przez referęcje to tak naprawdę mówimy innemu zasobowi
+                        (obiektowi, eventListenerowi, itp.) gdzie w pamięci ma szukać funkcji którą ma wywołać.</p>
+                </aside>
+            </section>
             <section>
                 <h3>Obiekt</h3>
+                <aside class="speech">
+                    <p>Stwórzmy więc metodę która będzie modyfikowała przekazany obiekt.</p>
+                    <p>W większości języków programowania po zmodyfikowaniu takiego obiektu obiekt oryginalny został by
+                    niezmieniony a aby otrzymać zmodyfikowany obiekt należało by zwrócić go z metody, użyć wskaźników
+                    lub innych mechanik dostarczanych przez dany język.</p>
+                </aside>
                 <pre><code class="hljs">
                     > var myObj = { key: 'value' };
                     > function addProperty(objToExtend) {
@@ -1166,40 +1596,53 @@
                     };
                     > addProperty(myObj);
                     > console.log(myObj);
-                    <span class="fragment element-log">{ key: 'value', type: 'monster' }</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>W JS jednak sprawa ma się odwrotnie, wszystkie obiekty (<b>OBIEKTY</b> nie typy proste) przekazywane do funkcji
+                            są referencjami do oryginalnego obiektu. Więc jego modyfikacja zmienia również obiekt
+                            oryginalny.</p>
+                        </aside><!--
+                        -->{ key: 'value', type: 'monster' }<!--
+                    --></span>
                 </code></pre>
             </section>
             <section>
                 <h3>Obiekt</h3>
+                <aside class="speech">
+                    <p>Nie zawsze jednak chcemy wykonywać operacje na obiekcie źródłowym.</p>
+                    <p>Możemy więc zrobić kopie obiektu za pomocą <i>Object.create</i>, pamiętając jednak iż będzie to
+                    "płaska" kopia. Czuli jeżeli nasz obiekt jako wartości ma inne obiekty to nawet po stworzeniu kopi
+                    w tych właściwościach będziemy odnosić się do oryginalnego obiektu.</p>
+                </aside>
                 <pre><code class="hljs">
-                    <span class="toggle-hide-0"><!--
-                        -->> var myObj = { key: 'value' }
-<!---->                    > function addProperty(objToExtend) {<!--
-                    --></span>
-                        <span class="toggle-show-0">var obj = Object.create(objToExtend);</span>
-                        <span class="toggle-hide-0"><!--
-                            -->obj.type = 'monster';
-<!---->                    };
-<!---->                    > addProperty(myObj);<!--
-                        --></span>
+                    > var myObj = { key: 'value' }
+                    > function addProperty(objToExtend) {
+                        var obj = Object.create(objToExtend);
+                        obj.type = 'monster';
+                    };
+                    > addProperty(myObj);
                     > console.log(myObj);
-                    <span class="fragment element-log">{ key: 'value' }</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>Po skopiowaniu i modyfikacji obiektu który został przekazany jako argument obiekt źródłowy
+                            został niezmienny.</p>
+                        </aside><!--
+                        -->{ key: 'value' }</span>
                 </code></pre>
             </section>
             <section>
                 <h3 >Obiekt</h3>
+                <aside class="speech">
+                    <p>Ten sam efekt można otrzymać wykorzystując <i>Object.assign</i> z ES6</p>
+                </aside>
                 <h3 class="slide-es6"></h3>
                 <pre><code class="hljs">
-                    <span class="toggle-hide-0"><!--
-                        -->> var myObj = { key: 'value' }
-<!---->                    > function addProperty(objToExtend) {<!--
-                    --></span>
-                        <span class="toggle-show-0">var obj = Object.assign({}, objToExtend);</span>
-                        <span class="toggle-hide-0"><!--
-                            -->obj.type = 'monster';
-<!---->                    };
-<!---->                    > addProperty(myObj);<!--
-                        --></span>
+                    > var myObj = { key: 'value' }
+                    > function addProperty(objToExtend) {
+                        var obj = Object.assign({}, objToExtend);
+                        obj.type = 'monster';
+                    };
+                    > addProperty(myObj);
                     > console.log(myObj);
                     <span class="element-log">{ key: 'value' }</span>
                 </code></pre>
@@ -1207,6 +1650,11 @@
 
             <section>
                 <h3>Tablica</h3>
+                <aside class="speech">
+                    <p>Jak mówiliśmy na jednym z pierwszych slajdów tablice w JS to też obiekty, więc zachowują się podobnie.</p>
+                    <p>Przekazując tablicę do metody przekazujemy jej referencję co skutkuje tym, że wprowadzając jakiekolwiek
+                    modyfikacje zmieniana jest tablica źródłowa.</p>
+                </aside>
                 <pre><code class="hljs">
                     > myArray = [1, 2, 3];
                     > function appendTo(arr) {
@@ -1214,11 +1662,20 @@
                     };
                     > appendTo(myArray);
                     > console.log(myArray);
-                    <span class="fragment element-log">[1, 2, 3, 4]</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>Z tego właśnie powodu mamy tu dodatkowy element.</p>
+                        </aside><!--
+                        -->[1, 2, 3, 4]</span>
                 </code></pre>
             </section>
             <section>
                 <h3>Tablica</h3>
+                <aside class="speech">
+                    <p>Możemy zapobiec takiemu działaniu używając metody <i>concat</i> na pustej tablicy.</p>
+                    <p>Jednak jeżeli elementami tablicy będą inne tablice lub obiekty <b>NIE</b> zostaną one skopiowane
+                    więc będziemy mieli dostęp do oryginalnych elementów przez referencję.</p>
+                </aside>
                 <pre><code class="hljs">
                     > myArray = [1, 2, 3];
                     > function appendTo(arr) {
@@ -1226,11 +1683,18 @@
                     };
                     > appendTo(myArray);
                     > console.log(myArray);
-                    <span class="fragment element-log">[1, 2, 3]</span>
+                    <span class="fragment element-log"><!--
+                        --><aside class="speech">
+                            <p>Jak widać po skopiowaniu tablica wyjściowa została nienaruszona.</p>
+                        </aside><!--
+                        -->[1, 2, 3]</span>
                 </code></pre>
             </section>
             <section>
                 <h3>Tablica</h3>
+                <aside class="speech">
+                    <p>To samo można osiągnąć przy użyciu <i>spread operator</i>.</p>
+                </aside>
                 <h3 class="slide-es6"></h3>
                 <pre><code class="hljs">
                     > myArray = [1, 2, 3];
@@ -1239,12 +1703,15 @@
                     };
                     > appendTo(myArray);
                     > console.log(myArray);
-                    <span class="fragment element-log">[1, 2, 3]</span>
+                    <span class="element-log">[1, 2, 3]</span>
                     </code></pre>
             </section>
 
             <section>
                 <h3>Funkcje</h3>
+                <aside class="speech">
+                    <p>Funkcje też możemy przekazywać przez referencję (z resztą już to robiliśmy w trakcie tej prezentacji).</p>
+                </aside>
                 <pre><code class="hljs">
                     > function getTwo() {
                         return 2;
@@ -1252,23 +1719,47 @@
                     > var f1 = getTwo();
                     > var f2 = getTwo;
                     > console.log(f1, f2);
-                    <span class="element-log"><span class="fragment">2</span> <span class="fragment">f () { return 2; }</span></span>
+                    <span class="element-log"><span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Do <i>f1</i> został zwrócony wynik</p>
+                        </aside><!--
+                        -->2</span> <span class="fragment"><!--
+                        --><aside class="speech">
+                            <p>Natomiast do f2 przekazana została referencję więc zamiast wyniku tej funkcji otrzymaliśmy jej ciało.</p>
+                            <p>Więc jak widać aby przekazać funkcję jako referencję wystarczy zapisać ja bez nawiasów.</p>
+                        </aside><!--
+                        -->f () { return 2; }</span></span>
                 </code></pre>
             </section>
             <section>
                 <h3>Funkcje</h3>
+                    <aside class="speech">
+                    <p>Ta sama zasada ma się do przekazywania metod jako callbacki do innych funkcji.</p>
+                    <p>Tak jak wcześniej mówiliśmy jedynym minusem takiego zapisu może być zmiana kontekstu wywołania, jednak
+                    my już wiemy jak sobie z tym poradzić :)</p>
+                </aside>
                 <pre><code class="hljs">
                     > function sendToServer(event) { /*...*/ };
                     > document.getElementById('sendButton')
-                              .addEventListener(sendToServer);
+                              .addEventListener('click', sendToServer);
                 </code></pre>
             </section>
             <section>
+                <aside class="speech">
+                    <p>Aby odpalić ćwiczenia przejdź w konsoli do katalogu <i>exercises</i> i wykonaj polecenie <i>node reference.js</i></p>
+                </aside>
                 <img src="assets/lets-code.png" alt="let's code" class="lets-code">
             </section>
         </section>
 
         <section data-state="end">
+            <aside class="speech">
+                <p>To już koniec ćwiczeń przewidzianych w zakresie tej prezentacji jednak jeżeli macie ochotę na
+                    dodatkową porcję zadań w katalogu <i>extra-project</i> znajdziecie makietę koszyka z reserved.</p>
+                <p>Znajduje się tam plik <i>README.md</i> gdzie znajdziecie instrukcję jak odpalić projekt oraz listę plików
+                wraz z nr. linii w której znajduje się opis zadania.</p>
+                <p>Dzięki za poświęcony czas i powodzenia :)</p>
+            </aside>
             <h2>Dziękuję :)</h2>
         </section>
     </div>
